@@ -3,21 +3,34 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - InvisWall
+  - Enemy
+  - LifeHeart
+  - Arrow
+  - InvisWallLeft
+  - InvisWallRight
+  - InvisWallUp
+  - InvisWallDown
+  - ExitPoint
+  - EntryPoint
+  - Fireball
+  - SceneBoundary
+  - Coin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - InvisWall
+  - Dragon Fireball
+  - Dragon
+  - SceneBoundary
+  - Arrow
+  - Entry and Exit
+  - Coin
   - 
   - 
   - 
