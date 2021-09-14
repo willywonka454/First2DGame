@@ -17,6 +17,7 @@ TagManager:
   - Fireball
   - SceneBoundary
   - Coin
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

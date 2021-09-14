@@ -36,22 +36,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dirX = Input.GetAxisRaw("Horizontal");
-        float dirY = Input.GetAxisRaw("Vertical");
+        if (GlobalVars.acceptingUserInput)
+        {
+            float dirX = Input.GetAxisRaw("Horizontal");
+            float dirY = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(dirX * speed, dirY * speed);
+            rb.velocity = new Vector2(dirX * speed, dirY * speed);
 
-        if (dirX < 0f)
-        {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1f, transform.localScale.y, transform.localScale.z);
-        }
-        else if (dirX > 0f)
-        {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }
-        else
-        {
-            transform.localScale = transform.localScale;
+            if (dirX < 0f)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1f, transform.localScale.y, transform.localScale.z);
+            }
+            else if (dirX > 0f)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = transform.localScale;
+            }
         }
 
         UpdateAnimationState();

@@ -24,10 +24,13 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && playerInventory.arrows > 0)
+        if (GlobalVars.acceptingUserInput)
         {
-            weaponScript.Shoot();
-            playerInventory.removeArrows(1);
+            if (Input.GetButtonDown("Fire1") && playerInventory.arrows > 0)
+            {
+                weaponScript.Shoot();
+                playerInventory.removeArrows(1);
+            }
         }
     }
 
