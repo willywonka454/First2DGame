@@ -41,6 +41,21 @@ public class PlayerCombat : MonoBehaviour
             healthScript.takeDmg(20);
         }
         
+        if (collider.gameObject.tag == "Skeleton")
+        {
+            healthScript.takeDmg(20);
+        }
+
+        if (collider.gameObject.tag == "Wolf")
+        {
+            healthScript.takeDmg(20);
+        }
+
+        if (collider.gameObject.tag == "Bat")
+        {
+            healthScript.takeDmg(20);
+        }
+
         if(collider.gameObject.tag == "Fireball")
         {
             healthScript.takeDmg(20);

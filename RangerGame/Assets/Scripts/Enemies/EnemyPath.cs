@@ -7,12 +7,17 @@ public class EnemyPath : MonoBehaviour
     public float speed;
     public float stoppingDistance;
 
-    private Transform target;
+    public Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        //target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    void Update()
+    {
+
     }
 
     // Update is called once per frame

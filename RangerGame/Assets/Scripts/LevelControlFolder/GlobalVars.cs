@@ -18,6 +18,10 @@ public static class GlobalVars
 
     public static bool acceptingUserInput = true;
 
+    public static bool dragonDead = false;
+    public static bool playerDead = false;
+    public static bool playerInVillage = false;
+
     public static void reset()
     {
         IDOfPrevExitPoint = -1;
@@ -29,5 +33,11 @@ public static class GlobalVars
         playerHP = 100;
 
         playerDirX = 1;
-}
+
+        acceptingUserInput = true;
+
+        dragonDead = false;
+        playerDead = false;
+        playerInVillage = false;
+    }
 }

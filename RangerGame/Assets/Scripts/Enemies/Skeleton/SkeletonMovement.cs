@@ -6,14 +6,13 @@ public class SkeletonMovement : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    [SerializeField] private float speed;
-    private int dirX;
+    public float speed;
+    public int dirX;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dirX = -1;
     }
 
     // Update is called once per frame

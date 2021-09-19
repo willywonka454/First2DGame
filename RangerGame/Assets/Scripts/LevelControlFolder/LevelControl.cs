@@ -17,6 +17,11 @@ public class LevelControl : MonoBehaviour
         return SceneManager.GetActiveScene().buildIndex;
     }
 
+    public static string getSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     public static void RestartLevel()
     {
         SceneManager.LoadScene(getCurrScene());
@@ -41,5 +46,10 @@ public class LevelControl : MonoBehaviour
     public static void loadLevelByIndex(int levelIndex)
     {
         SceneManager.LoadScene(levelIndex);
+    }
+
+    public static void loadLevelByName(string levelName)
+    {
+        SceneManager.LoadScene(levelName);
     }
 }

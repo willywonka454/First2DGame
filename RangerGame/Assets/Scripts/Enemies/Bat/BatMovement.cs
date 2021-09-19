@@ -7,13 +7,12 @@ public class BatMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     [SerializeField] private float speed;
-    private int dirY;
+    public int dirY;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dirY = -1;
     }
 
     // Update is called once per frame

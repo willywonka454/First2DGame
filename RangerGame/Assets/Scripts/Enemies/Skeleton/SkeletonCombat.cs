@@ -21,13 +21,24 @@ public class SkeletonCombat : MonoBehaviour
     {
         if (collider.gameObject.tag == "Arrow")
         {
-            healthScript.takeDmg(20);
+            takeDmg(20);
         }
+    }
+
+    public void takeDmg(int dmg)
+    {
+        healthScript.takeDmg(dmg);
 
         if (healthScript.hp <= 0)
         {
-            Destroy(transform.parent.gameObject);
-            coinDropper.dropCoin((healthScript.maxhp / 20) + 1);
+            die();
         }
+
+    }
+
+    public void die()
+    {
+        Destroy(transform.parent.gameObject);
+        coinDropper.dropCoin((healthScript.maxhp / 20) + 1);
     }
 }

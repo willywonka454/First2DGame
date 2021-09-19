@@ -58,6 +58,7 @@ public class PauseMenu : MonoBehaviour
     public void restart()
     {
         resume();
+        SceneData.reset();
         GlobalVars.reset();
         LevelControl.loadLevelByIndex(1);
     }

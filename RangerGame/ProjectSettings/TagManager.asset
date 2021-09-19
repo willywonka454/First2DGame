@@ -18,6 +18,9 @@ TagManager:
   - SceneBoundary
   - Coin
   - PauseMenu
+  - Skeleton
+  - Bat
+  - Wolf
   layers:
   - Default
   - TransparentFX

@@ -34,6 +34,7 @@ public class ExitPoint : MonoBehaviour
         {
             GlobalVars.playerDirX = Mathf.Sign(col.gameObject.transform.localScale.x);
             GlobalVars.IDOfPrevExitPoint = ID;
+            SceneData.save();
             LevelControl.loadLevelByIndex(nextLevel);
         }
     }

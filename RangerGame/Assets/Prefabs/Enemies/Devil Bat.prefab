@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8652143357648294056}
   m_Layer: 0
   m_Name: Devil Bat
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 5306548659174366703}
   m_Layer: 0
   m_Name: Bat
-  m_TagString: Enemy
+  m_TagString: Bat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8652143357710138229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15000057, y: 0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8022, y: 1.1435, z: 1}
   m_Children: []
   m_Father: {fileID: 8652143357648294056}
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  dirY: -1
 --- !u!114 &8652143357710138239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d796afdee6d85d343809de44537c7c57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinDropper: {fileID: 0}
   healthScript: {fileID: 0}
 --- !u!114 &5306548659174366703
 MonoBehaviour:
@@ -314,11 +316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348693, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.18
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348693, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.53
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348693, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3614394178883751394}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Enemy
+  m_TagString: Skeleton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2442412164407007950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.17999983, y: -0.43000007, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.68, y: 1.68, z: 1.68}
   m_Children:
   - {fileID: 5486539819803064637}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  dirX: -1
 --- !u!114 &2442412164407007951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af092fc8c52ff7f4eb4a6d7ecdf1e8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhp: 40
-  hp: 40
+  maxhp: 60
+  hp: 60
 --- !u!114 &2442412164407007952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,7 +339,7 @@ GameObject:
   - component: {fileID: 4029922173108232057}
   m_Layer: 0
   m_Name: Fire Skeleton
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,11 +699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348693, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.3
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348693, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.08
+      value: 4.46
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348693, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
