@@ -8,6 +8,9 @@ public class PetMovement : MonoBehaviour
     public float stoppingDistance;
 
     GameObject[] skeletons;
+    GameObject[] wolves;
+    GameObject[] dragons;
+    GameObject[] allEnemies;
 
     public Transform target;
     public Transform player;
@@ -23,14 +26,30 @@ public class PetMovement : MonoBehaviour
     void Start()
     {
         mode = Mode.FollowPlayer;
+
+        GameObject[] entryPoints = GameObject.FindGameObjectsWithTag("EntryPoint");
+
+        foreach (GameObject entryPoint in entryPoints)
+        {
+            EntryPoint entryPointScript = entryPoint.GetComponent<EntryPoint>();
+
+            if (entryPointScript.ID == GlobalVars.IDOfPrevExitPoint)
+            {
+                transform.position = entryPoint.transform.position;
+            }
+        }
     }
 
     void Update()
     {
         skeletons = GameObject.FindGameObjectsWithTag("Skeleton");
+        wolves = GameObject.FindGameObjectsWithTag("Wolf");
+        dragons = GameObject.FindGameObjectsWithTag("Dragon");
 
-        if (skeletons.Length != 0)
-        {
+        poolEnemies();
+
+        if (allEnemies.Length != 0)
+        {           
             mode = Mode.Attack;
             GameObject nearestEnemy = findNearestEnemy();
             target = nearestEnemy.transform;
@@ -56,9 +75,9 @@ public class PetMovement : MonoBehaviour
     {
         GameObject nearest = null;
 
-        for (int i = 0; i < skeletons.Length; i++)
+        for (int i = 0; i < allEnemies.Length; i++)
         {
-            GameObject candidate = skeletons[i];
+            GameObject candidate = allEnemies[i];
 
             if (nearest == null)
             {
@@ -67,7 +86,7 @@ public class PetMovement : MonoBehaviour
 
             else
             {
-                float canidateDist = Vector2.Distance(player.transform.position, skeletons[i].transform.position);
+                float canidateDist = Vector2.Distance(player.transform.position, allEnemies[i].transform.position);
 
                 float nearestDist = Vector2.Distance(player.transform.position, nearest.transform.position);
 
@@ -79,5 +98,35 @@ public class PetMovement : MonoBehaviour
         }
 
         return nearest;
+    }
+
+    void faceCorrectDirection()
+    {
+        
+    }
+
+    void poolEnemies()
+    {
+        allEnemies = new GameObject[skeletons.Length + wolves.Length + dragons.Length];
+
+        int totalEnemies = 0;
+
+        for (int i = 0; i < skeletons.Length; i++)
+        {
+            allEnemies[totalEnemies] = skeletons[i];
+            totalEnemies++;
+        }
+
+        for (int i = 0; i < wolves.Length; i++)
+        {
+            allEnemies[totalEnemies] = wolves[i];
+            totalEnemies++;
+        }
+
+        for (int i = 0; i < dragons.Length; i++)
+        {
+            allEnemies[totalEnemies] = dragons[i];
+            totalEnemies++;
+        }
     }
 }

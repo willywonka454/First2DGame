@@ -114,6 +114,23 @@ public class SceneData : MonoBehaviour
             scenes[sceneIndex].myBats.Add(new MyBat(batPos, batQuat, batScale, batdirY, batHP));
         }
     }
+
+    public static void saveHearts()
+    {
+        GameObject[] hearts = GameObject.FindGameObjectsWithTag("LifeHeart");
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            Transform heartTrans = hearts[i].GetComponent<Transform>();
+            Vector3 heartPos = new Vector3(heartTrans.position.x, heartTrans.position.y, heartTrans.position.z);
+            Quaternion heartQuat = new Quaternion(heartTrans.rotation.x, heartTrans.rotation.y, heartTrans.rotation.z, heartTrans.rotation.w);
+
+            Heart heartScript = hearts[i].GetComponent<Heart>();
+            int heartVal = heartScript.healVal;
+
+            scenes[sceneIndex].myHearts.Add(new MyHeart(heartPos, heartQuat, heartVal));
+        }
+    }
 }
 
 public class MyScene
@@ -125,6 +142,7 @@ public class MyScene
     public List<MyBat> myBats = new List<MyBat>();
     public List<MySkeleton> mySkeletons = new List<MySkeleton>();
     public List<MyWolf> myWolves = new List<MyWolf>();
+    public List<MyHeart> myHearts = new List<MyHeart>();
 
     public MyScene(string sceneName, int sceneIndex)
     {
@@ -198,5 +216,19 @@ public class MyWolf
         scale = newScale;
         dirX = newDirX;
         health = newHealth;
+    }
+}
+
+public class MyHeart
+{
+    public Vector3 pos;
+    public Quaternion quat;
+    public int healVal;
+
+    public MyHeart(Vector3 newPos, Quaternion newQuat, int newHealVal)
+    {
+        pos = newPos;
+        quat = newQuat;
+        healVal = newHealVal;
     }
 }

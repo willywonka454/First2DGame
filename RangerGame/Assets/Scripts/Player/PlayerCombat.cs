@@ -56,12 +56,19 @@ public class PlayerCombat : MonoBehaviour
             healthScript.takeDmg(20);
         }
 
-        if(collider.gameObject.tag == "Fireball")
+        if (collider.gameObject.tag == "Fireball")
         {
             healthScript.takeDmg(20);
         }
 
-        if(collider.gameObject.tag == "Coin")
+        if (collider.gameObject.tag == "LifeHeart")
+        {
+            Heart heartScript = collider.gameObject.GetComponent<Heart>();
+            healthScript.heal(heartScript.healVal);
+            Destroy(collider.gameObject);
+        }
+
+        if (collider.gameObject.tag == "Coin")
         {
             Coin coinScript = collider.gameObject.GetComponent<Coin>();
             playerInventory.addCoins(coinScript.value);

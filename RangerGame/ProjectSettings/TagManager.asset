@@ -21,6 +21,7 @@ TagManager:
   - Skeleton
   - Bat
   - Wolf
+  - Dragon
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - Arrow
   - Entry and Exit
   - Coin
-  - 
+  - LifeHeart
   - 
   - 
   - 

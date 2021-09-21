@@ -72,4 +72,20 @@ public class DragonCombat : MonoBehaviour
             Destroy(transform.parent.gameObject);
         }
     }
+
+    public void takeDmg(int dmg)
+    {
+        healthScript.takeDmg(dmg);
+
+        if (healthScript.hp <= 0)
+        {
+            die();
+        }
+
+    }
+
+    public void die()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }
