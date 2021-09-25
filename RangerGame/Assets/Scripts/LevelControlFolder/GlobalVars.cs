@@ -20,7 +20,7 @@ public static class GlobalVars
 
     public static bool dragonDead = false;
     public static bool playerDead = false;
-    public static bool playerInVillage = false;
+    public static bool playerInVillage = true;
 
     public static void reset()
     {
