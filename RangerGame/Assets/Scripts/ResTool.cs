@@ -6,20 +6,24 @@ using UnityEngine.UI;
 public class ResTool : MonoBehaviour
 {
 
-    public int width;
-    public int height;
+    public int width = 1211;
+    public int height = 531;
 
     public Text widthText;
     public Text heightText;
 
     public Toggle fullScreenToggle;
 
+    public Camera cam;
+
     // Start is called before the first frame update
     void Start()
     {
-        width = Screen.currentResolution.width;
+        Debug.Log(cam.aspect);
 
-        height = Screen.currentResolution.height;
+        width = 1211;
+
+        height = 531;
 
         fullScreenToggle.isOn = Screen.fullScreen;
     }

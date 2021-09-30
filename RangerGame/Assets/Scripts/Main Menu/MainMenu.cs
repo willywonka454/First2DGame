@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public void Start()
     {
-        Screen.SetResolution(1211, 531, false);
+        //Screen.SetResolution(1211, 531, false);
     }
 
     public void PlayGame()
