@@ -6,7 +6,7 @@ using System.Reflection;
 
 public static class GlobalVars
 {
-    public static int IDOfPrevExitPoint = -1;
+    public static int IDOfPrevExitPoint = -2;
 
     public static int indexOfPrevLevel = 0;
     public static int indexOfShop = 17;
@@ -24,7 +24,7 @@ public static class GlobalVars
 
     public static void reset()
     {
-        IDOfPrevExitPoint = -1;
+        IDOfPrevExitPoint = -2;
         indexOfPrevLevel = 0;
         indexOfShop = 17;
 

@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
 
+    Vector2 mousePos2D;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LevelControl.loadLevelByName("MainMenu");
+        }
+
         if (GlobalVars.acceptingUserInput)
         {
             float dirX = Input.GetAxisRaw("Horizontal");

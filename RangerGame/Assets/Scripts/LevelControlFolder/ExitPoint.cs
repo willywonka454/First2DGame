@@ -38,4 +38,14 @@ public class ExitPoint : MonoBehaviour
             LevelControl.loadLevelByIndex(nextLevel);
         }
     }
+
+    public void clicked ()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+
+        GlobalVars.playerDirX = Mathf.Sign(player.gameObject.transform.localScale.x);
+        GlobalVars.IDOfPrevExitPoint = ID;
+        SceneData.save();
+        LevelControl.loadLevelByIndex(nextLevel);
+    }
 }

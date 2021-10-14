@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Villages/Village 1.unity
     guid: 3a67d5df3dfc6fc499a48ddeba431acc
   - enabled: 1
+    path: Assets/Scenes/Inn.unity
+    guid: 149311783c255b643bc8016cc7f387da
+  - enabled: 1
     path: Assets/Scenes/Forests/Forest 1.unity
     guid: aeaacfc4ca57908499b0914ed29ee989
   - enabled: 1
