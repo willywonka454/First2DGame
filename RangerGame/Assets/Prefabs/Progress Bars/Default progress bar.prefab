@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4200866498123069636}
   - component: {fileID: 4200866498123069638}
   - component: {fileID: 4200866498123069639}
+  - component: {fileID: 4200866499029856807}
   m_Layer: 5
-  m_Name: Progress bar
+  m_Name: Default progress bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +26,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4200866498123069637}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 13.213711, y: 1.2098054, z: 1.2098054}
   m_Children:
@@ -76,6 +77,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4200866499029856807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200866498123069637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4a80b3d6fb3d44790536795c9443b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillImage: {fileID: 4200866498954326472}
+  bgImage: {fileID: 4200866498123069639}
 --- !u!1 &4200866498954326478
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +161,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.933
+  m_FillAmount: 0.762
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

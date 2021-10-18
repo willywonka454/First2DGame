@@ -19,6 +19,7 @@ public class LevelTest : MonoBehaviour
     public Button addXPBtn;
     public Button setMultiplierBtn;
     public Button setInitialXPBtn;
+    public Button resetBtn;
 
     [Header("Input fields")]
     public TMP_InputField setLevelInput;
@@ -26,6 +27,7 @@ public class LevelTest : MonoBehaviour
     public TMP_InputField addXPInput;
     public TMP_InputField multiplierInput;
     public TMP_InputField initialXPInput;
+    public TMP_InputField resetInput;
 
     [Header("Player")]
     public GameObject player;
@@ -47,6 +49,24 @@ public class LevelTest : MonoBehaviour
         percentVal.text = "" + (int) (playerXPScript.percentTowardsNextLevel() * 100) + "%";
 
         relativeXPVal.text = (playerXPScript.currXP - playerXPScript.currMinXP) + "/" + (playerXPScript.currMaxXP - playerXPScript.currMinXP);
+    }
+
+    public void reset()
+    {
+        string resetLevel = "level";
+        string totalReset = "total";
+
+        string userInput = resetInput.text;
+
+        if (userInput.Equals(resetLevel))
+        {
+            playerXPScript.currXP = playerXPScript.currMinXP;
+        }
+
+        if (userInput.Equals(totalReset))
+        {
+            playerXPScript.reset();
+        }
     }
 
     public void setLevel()
@@ -81,7 +101,7 @@ public class LevelTest : MonoBehaviour
 
     public void setMultiplier()
     {
-        int newMultiplier = int.Parse(multiplierInput.text);
+        float newMultiplier = float.Parse(multiplierInput.text);
 
         playerXPScript.setMultiplier(newMultiplier);
     }
