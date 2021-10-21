@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
+    public GameObject owner;
 
     public GameObject FXPrefab;
 

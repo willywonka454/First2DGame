@@ -12,7 +12,7 @@ public static class GlobalVars
     public static int indexOfShop = 17;
 
     public static int playerCoins = 5;
-    public static int playerArrows = 10;
+    public static int playerArrows = 100;
     public static int playerHP = 100;
     public static float playerDirX = 1;
 

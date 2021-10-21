@@ -11,6 +11,10 @@ public class PlayerCombat : MonoBehaviour
 
     public PlayerInventory playerInventory;
 
+    public PlayerXP playerXP;
+
+    public int attack = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +23,8 @@ public class PlayerCombat : MonoBehaviour
         weaponScript = GetComponentInChildren<Weapon>();
 
         playerInventory = GetComponent<PlayerInventory>();
+
+        playerXP = GetComponent<PlayerXP>();
     }
 
     // Update is called once per frame

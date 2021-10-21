@@ -9,6 +9,8 @@ public class SkeletonCombat : MonoBehaviour
 
     public Health healthScript;
 
+    public int xpReward = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,18 @@ public class SkeletonCombat : MonoBehaviour
     {
         if (collider.gameObject.tag == "Arrow")
         {
-            takeDmg(20);
+            ProjectileBehavior arrow = collider.gameObject.GetComponent<ProjectileBehavior>();
+
+            GameObject dmgSource = arrow.owner;
+
+            int dmg = 0;
+
+            if (dmgSource.tag == "Player")
+            {
+                dmg = arrow.owner.GetComponent<PlayerCombat>().attack;
+            }
+
+            takeDmg(dmg, dmgSource);
         }
     }
 
@@ -32,6 +45,24 @@ public class SkeletonCombat : MonoBehaviour
         if (healthScript.hp <= 0)
         {
             die();
+        }
+
+    }
+
+    public void takeDmg(int dmg, GameObject source)
+    {
+        if (source != null)
+        {
+            healthScript.takeDmg(dmg);
+
+            if (healthScript.hp <= 0)
+            {
+                PlayerXP playerXP = source.GetComponent<PlayerXP>();
+
+                playerXP.setXP(playerXP.currXP + xpReward);
+
+                die();
+            }
         }
 
     }

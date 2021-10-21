@@ -20,5 +20,9 @@ public class Weapon : MonoBehaviour
         weaponDirX = player.transform.localScale.x;
 
         newProjectile.transform.localScale = new Vector3(weaponDirX, 1, 1);
+
+        ProjectileBehavior projectileScript = newProjectile.GetComponent<ProjectileBehavior>();
+
+        projectileScript.owner = player;
     }
 }
