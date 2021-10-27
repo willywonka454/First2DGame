@@ -11,6 +11,8 @@ public class PetCombat : MonoBehaviour
 
     public bool inAttackRange;
 
+    public int attack = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,14 +56,14 @@ public class PetCombat : MonoBehaviour
                 {
                     SkeletonCombat skelCombat = enemy.GetComponent<SkeletonCombat>();
 
-                    skelCombat.takeDmg(10);
+                    skelCombat.takeDmg(attack, gameObject);
                 }
 
                 if (enemy.tag == "Dragon")
                 {
                     DragonCombat dragCombat = enemy.GetComponent<DragonCombat>();
 
-                    dragCombat.takeDmg(10);
+                    dragCombat.takeDmg(attack);
                 }
 
                 yield return new WaitForSeconds(0.5f);

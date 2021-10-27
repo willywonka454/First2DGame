@@ -53,7 +53,7 @@ public class SkeletonCombat : MonoBehaviour
     {
         if (source != null)
         {
-            healthScript.takeDmg(dmg);
+            healthScript.takeDmg(dmg);            
 
             if (healthScript.hp <= 0)
             {

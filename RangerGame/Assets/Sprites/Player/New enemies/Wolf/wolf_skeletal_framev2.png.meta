@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 3359cf3fad747d142adcbefb2c01e5a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4252818597530686238
+    second: wolf_skeletal_framev2_0
+  - first:
+      213: 3891178559511182243
+    second: wolf_skeletal_framev2_1
+  - first:
+      213: -3825653209362312007
+    second: wolf_skeletal_framev2_2
+  - first:
+      213: -1915573063164097208
+    second: wolf_skeletal_framev2_3
+  - first:
+      213: 1456682228066496568
+    second: wolf_skeletal_framev2_4
+  - first:
+      213: -7132465288200986107
+    second: wolf_skeletal_framev2_5
+  - first:
+      213: -8332767144281314515
+    second: wolf_skeletal_framev2_6
+  - first:
+      213: 211260701491254521
+    second: wolf_skeletal_framev2_7
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_0
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 345
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec22089404faf4c0800000000000000
+      internalID: -4252818597530686238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_1
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 346
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abb745984e300630800000000000000
+      internalID: 3891178559511182243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 346
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4502edcac88eac0800000000000000
+      internalID: -3825653209362312007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_3
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 308
+        width: 77
+        height: 166
+      alignment: 9
+      pivot: {x: 0.0055010905, y: 0.1970509}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d0cccb2748a65e0800000000000000
+      internalID: -1915573063164097208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_4
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 128
+        width: 77
+        height: 64
+      alignment: 9
+      pivot: {x: 0.9724989, y: 0.6808789}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8303782c4cc273410800000000000000
+      internalID: 1456682228066496568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_5
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 154
+        width: 128
+        height: 115
+      alignment: 9
+      pivot: {x: 1.003876, y: 0.22677267}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502e9fb1c94640d90800000000000000
+      internalID: -7132465288200986107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_6
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 51
+        width: 38
+        height: 26
+      alignment: 9
+      pivot: {x: 0.15424307, y: 0.97638994}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2be0116e601c5c80800000000000000
+      internalID: -8332767144281314515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolf_skeletal_framev2_7
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 51
+        width: 51
+        height: 26
+      alignment: 9
+      pivot: {x: 0.13811119, y: 0.9483311}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4d26b1d7c8ee200800000000000000
+      internalID: 211260701491254521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
