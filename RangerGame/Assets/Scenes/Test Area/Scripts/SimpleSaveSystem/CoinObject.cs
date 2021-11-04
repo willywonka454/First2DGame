@@ -1,8 +1,0 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CoinObject : SceneObject
-{
-    public string subTag = "Coin";
-}
