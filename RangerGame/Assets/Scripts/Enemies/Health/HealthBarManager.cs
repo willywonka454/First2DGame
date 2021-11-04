@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBarManager : MonoBehaviour
 {
-    public Text myText;
+    public TMP_Text myText;
 
     public Health healthScript;
 

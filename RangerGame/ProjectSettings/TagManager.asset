@@ -23,6 +23,7 @@ TagManager:
   - Wolf
   - Dragon
   - Pet
+  - Green blob
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - Entry and Exit
   - Coin
   - LifeHeart
-  - 
+  - Player
   - 
   - 
   - 

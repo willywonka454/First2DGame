@@ -34,7 +34,7 @@ public class MainMenuControl : MonoBehaviour
     // New game methods
     public void newGame()
     {
-        LevelControl.loadLevelByName("Village 1");
+        LevelControl.loadLevelByName("Forest 2");
     }
 
     // Exit and credit methods
