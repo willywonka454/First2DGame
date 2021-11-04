@@ -19,10 +19,6 @@ public class GameDataManager : MonoBehaviour
         {
             Directory.CreateDirectory(gameSavesPath);
         }
-
-        GameObject test = (UnityEngine.GameObject) Resources.Load("Dball");
-
-        Instantiate(test);
     }
 
     // Update is called once per frame
@@ -31,9 +27,24 @@ public class GameDataManager : MonoBehaviour
         
     }
 
+    public void deleteAllSceneObjectsInWorld()
+    {
+        Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
+
+        foreach (GenericSaver saveScript in saveScripts)
+        {
+            Destroy(saveScript.gameObject);
+        }
+    }
+
+    public void deleteSceneObjectsInLocalData()
+    {
+        localData.sceneObjects.Clear();
+    }
+
     public void loadSceneObjectsIntoWorld()
     {
-        // destroy all objects with genericsaver component attached
+        deleteAllSceneObjectsInWorld();
 
         foreach (SceneObject sceneObject in localData.sceneObjects)
         {
@@ -46,6 +57,8 @@ public class GameDataManager : MonoBehaviour
 
     public void saveLocalSceneObjects()
     {
+        deleteSceneObjectsInLocalData();
+
         Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
 
         foreach (GenericSaver saveScript in saveScripts)
