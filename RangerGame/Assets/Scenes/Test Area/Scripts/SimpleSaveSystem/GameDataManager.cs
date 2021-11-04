@@ -8,8 +8,7 @@ public class GameDataManager : MonoBehaviour
 {
     public string saveFile;
     public string gameSavesPath;
-    public GameData gameData = new GameData();
-    public List<string> targetTags = new List<string>();
+    public GameData localData = new GameData();
 
     // Start is called before the first frame update
     void Start()
@@ -32,50 +31,38 @@ public class GameDataManager : MonoBehaviour
         
     }
 
-    public List<GameObject> returnAllGameObjectsToLoad()
+    public void loadSceneObjectsIntoWorld()
     {
-        return null;
-    }
+        // destroy all objects with genericsaver component attached
 
-    public void loadGameObjectsIntoUnity()
-    {
-        // for each gameObject in gameObjectsToLoad, get that gameObject's UniversalSaveAndLoadProtocol component.
-        // Then, get their specific save and loader and call GenericSaveAndLoader.loadSceneObject();
-    }
-
-    public List<GameObject> returnAllGameObjectsToSave()
-    {
-        List<GameObject> gameObjectsToSave = new List<GameObject>();
-
-        foreach (string targetTag in targetTags)
+        foreach (SceneObject sceneObject in localData.sceneObjects)
         {
-            GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(targetTag);
-            foreach (GameObject targetObject in targetObjects)
-            {
-                gameObjectsToSave.Add(targetObject);
-            }
+            GameObject newGameObject = (UnityEngine.GameObject)Resources.Load(sceneObject.myName);
+            GenericSaver myLoaderScript = newGameObject.GetComponent<GenericSaver>();
+            myLoaderScript.loadDataFromSceneObjectToMyGameObject(sceneObject);
+            Instantiate(newGameObject, newGameObject.GetComponent<Transform>().position, newGameObject.GetComponent<Transform>().rotation);
         }
-
-        return gameObjectsToSave;
     }
 
-    public void saveGameObjectsToGameData(List<GameObject> gameObjectsToSave)
+    public void saveLocalSceneObjects()
     {
-        foreach (GameObject gameObjectToSave in gameObjectsToSave)
+        Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
+
+        foreach (GenericSaver saveScript in saveScripts)
         {
-            GeneralSaver mySaveProtocol = gameObjectToSave.GetComponent<GeneralSaver>();
-            SceneObject sceneObject = mySaveProtocol.returnSceneObject();
-            gameData.sceneObjects.Add(sceneObject);
+            SceneObject sceneObject = new SceneObject();
+            saveScript.saveMyDataToSceneObject(sceneObject);
+            localData.sceneObjects.Add(sceneObject);
         }
     }
 
     public void saveToFile(string fileName)
     {
-        saveGameObjectsToGameData(returnAllGameObjectsToSave());
+        saveLocalSceneObjects();
 
         saveFile = Path.Combine(gameSavesPath, fileName + ".json");
 
-        string jsonString = JsonUtility.ToJson(gameData, true);
+        string jsonString = JsonUtility.ToJson(localData, true);
 
         File.WriteAllText(saveFile, jsonString);
     }
@@ -88,7 +75,9 @@ public class GameDataManager : MonoBehaviour
         {
             string fileContents = File.ReadAllText(saveFile);
 
-            gameData = JsonUtility.FromJson<GameData>(fileContents);
+            localData = JsonUtility.FromJson<GameData>(fileContents);
+
+            loadSceneObjectsIntoWorld();
 
             Debug.Log(fileName + " was loaded successfully.");
         }

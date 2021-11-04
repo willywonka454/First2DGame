@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinSaver : GeneralSaver
+public class CoinSaver : GenericSaver
 {
-    public override void saveDataToSceneObject()
+    public override void saveMyDataToSceneObject(SceneObject sceneObject)
     {
-        base.saveDataToSceneObject();
+        base.saveMyDataToSceneObject(sceneObject);
 
-        sceneObject.myTag = "Coin object.";
+        sceneObject.myName = "Coin object.";
     }
 }
