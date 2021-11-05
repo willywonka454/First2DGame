@@ -48,10 +48,11 @@ public class GameDataManager : MonoBehaviour
 
         foreach (SceneObject sceneObject in localData.sceneObjects)
         {
-            GameObject newGameObject = (UnityEngine.GameObject)Resources.Load(sceneObject.myName);
-            GenericSaver myLoaderScript = newGameObject.GetComponent<GenericSaver>();
+            GameObject myPrefab = (UnityEngine.GameObject)Resources.Load(sceneObject.myName);
+            GameObject myGameObject = Instantiate(myPrefab);
+            GenericSaver myLoaderScript = myGameObject.GetComponent<GenericSaver>();
             myLoaderScript.loadDataFromSceneObjectToMyGameObject(sceneObject);
-            Instantiate(newGameObject, newGameObject.GetComponent<Transform>().position, newGameObject.GetComponent<Transform>().rotation);
+            
         }
     }
 
