@@ -27,7 +27,7 @@ public class GameDataManager : MonoBehaviour
         
     }
 
-    public void deleteAllSceneObjectsInWorld()
+    public void deleteSceneObjectsInWorld()
     {
         Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
 
@@ -44,7 +44,7 @@ public class GameDataManager : MonoBehaviour
 
     public void loadSceneObjectsIntoWorld()
     {
-        deleteAllSceneObjectsInWorld();
+        deleteSceneObjectsInWorld();
 
         foreach (SceneObject sceneObject in localData.sceneObjects)
         {
@@ -55,7 +55,7 @@ public class GameDataManager : MonoBehaviour
         }
     }
 
-    public void saveLocalSceneObjects()
+    public void saveSceneObjects()
     {
         deleteSceneObjectsInLocalData();
 
@@ -71,7 +71,7 @@ public class GameDataManager : MonoBehaviour
 
     public void saveToFile(string fileName)
     {
-        saveLocalSceneObjects();
+        saveSceneObjects();
 
         saveFile = Path.Combine(gameSavesPath, fileName + ".json");
 

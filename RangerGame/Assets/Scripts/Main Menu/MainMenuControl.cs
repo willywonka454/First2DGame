@@ -28,7 +28,7 @@ public class MainMenuControl : MonoBehaviour
 
     void Update()
     {
-        // If Screen.Resolution not same as current resolution, save to playerprefs
+        
     }
 
     // New game methods
