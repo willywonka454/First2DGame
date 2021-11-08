@@ -24,7 +24,7 @@ public class DetectRadius : MonoBehaviour
     {
         target = GameObject.FindWithTag(targetTag);
 
-        indicator.gameObject.SetActive(true);
+        if (indicator != null) indicator.gameObject.SetActive(true);
 
         for (float angle = 0; angle < (2 * Mathf.PI); angle += (Mathf.PI / 12))
         {
@@ -33,7 +33,8 @@ public class DetectRadius : MonoBehaviour
 
             Vector2 pos = new Vector2(x, y);
 
-            Instantiate(DballPrefab, pos, Quaternion.identity);
+            var radiusMarker = Instantiate(DballPrefab, pos, Quaternion.identity);
+            radiusMarker.transform.parent = transform;
         }
     }
 
@@ -54,16 +55,21 @@ public class DetectRadius : MonoBehaviour
             targetDetected = false;
         }
 
-        if (targetDetected)
+        if (indicator != null)
         {
-            indicator.text = "Player detected: true";
-            indicator.color = Color.green;
-        }
+            if (targetDetected)
+            {
+                indicator.text = "Player detected: true";
+                indicator.color = Color.green;
+            }
 
-        else
-        {
-            indicator.text = "Player detected: false";
-            indicator.color = Color.red;
+            else
+            {
+                indicator.text = "Player detected: false";
+                indicator.color = Color.red;
+            }
+
+            indicator.transform.position = new Vector2(center.x + 5, center.y + 5);
         }
     }
 }

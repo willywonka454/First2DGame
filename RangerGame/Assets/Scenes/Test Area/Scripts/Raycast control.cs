@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WolfMovement : MonoBehaviour
+public class Raycastcontrol : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

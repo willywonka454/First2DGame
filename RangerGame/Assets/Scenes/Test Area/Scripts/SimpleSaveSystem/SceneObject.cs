@@ -10,6 +10,4 @@ public class SceneObject
     public Vector3 myPos;
     public Quaternion myRotation;
     public Vector3 myLocalScale;
-
-
 }

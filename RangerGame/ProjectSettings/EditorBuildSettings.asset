@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Open plains.unity
     guid: 96ebc7e0b92427a4b9983b9efbcdcd3c
   - enabled: 1
+    path: Assets/Scenes/Test Area/My Area.unity
+    guid: fbdd246858b97c342a8376962c46e547
+  - enabled: 1
     path: Assets/Scenes/Villages/Village 1.unity
     guid: 3a67d5df3dfc6fc499a48ddeba431acc
   - enabled: 1

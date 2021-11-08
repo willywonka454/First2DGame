@@ -25,10 +25,10 @@ public class MoveTowardsTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        followTarget();
+        
     }
 
-    void followTarget()
+    public void followTarget()
     {
         targetPos = target.transform.position;
 
@@ -58,7 +58,7 @@ public class MoveTowardsTarget : MonoBehaviour
         }
     }
 
-    void faceTarget()
+    public void faceTarget()
     {
         float newDirX = Mathf.Abs(transform.localScale.x) * Mathf.Sign(myRB.velocity.x);
         transform.localScale = new Vector2(newDirX, transform.localScale.y);

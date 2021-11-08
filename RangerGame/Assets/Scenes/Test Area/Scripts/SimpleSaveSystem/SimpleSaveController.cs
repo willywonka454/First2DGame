@@ -11,8 +11,6 @@ public class SimpleSaveController : MonoBehaviour
     public Button loadFileButton;
     public TMP_InputField fileInputField;
 
-    public GameDataManager gameDataManager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +25,11 @@ public class SimpleSaveController : MonoBehaviour
 
     public void saveAsClicked()
     {
-        gameDataManager.saveToFile(fileInputField.text);
+        GDMContainer.myGDM.saveToFile(fileInputField.text);
     }
 
     public void loadFileClicked()
     {
-        gameDataManager.loadFile(fileInputField.text);
+        GDMContainer.myGDM.loadFile(fileInputField.text);
     }
 }

@@ -2,13 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
 using System.IO;
 
-public class GameDataManager : MonoBehaviour
+public class GameDataManager
 {
     public string saveFile;
     public string gameSavesPath;
-    public GameData localData = new GameData();
+    public GameData gameData = new GameData();
+
+    public GameDataManager()
+    {
+        gameSavesPath = Path.Combine(Application.persistentDataPath, "GameSaves");
+
+        if (!Directory.Exists(gameSavesPath))
+        {
+            Directory.CreateDirectory(gameSavesPath);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,32 +44,50 @@ public class GameDataManager : MonoBehaviour
 
         foreach (GenericSaver saveScript in saveScripts)
         {
-            Destroy(saveScript.gameObject);
+            Object.Destroy(saveScript.gameObject);
         }
     }
 
-    public void deleteSceneObjectsInLocalData()
+    public void deleteSceneObjectsStoredInGameData()
     {
-        localData.sceneObjects.Clear();
+        gameData.sceneObjects.Clear();
+    }
+
+    public void loadCurrentScene()
+    {
+
     }
 
     public void loadSceneObjectsIntoWorld()
     {
         deleteSceneObjectsInWorld();
 
-        foreach (SceneObject sceneObject in localData.sceneObjects)
+        foreach (SceneObject sceneObject in gameData.sceneObjects)
         {
             GameObject myPrefab = (UnityEngine.GameObject)Resources.Load(sceneObject.myName);
-            GameObject myGameObject = Instantiate(myPrefab);
+            GameObject myGameObject = Object.Instantiate(myPrefab);
             GenericSaver myLoaderScript = myGameObject.GetComponent<GenericSaver>();
             myLoaderScript.loadDataFromSceneObjectToMyGameObject(sceneObject);
-            
+        }
+    }
+
+    public void saveCurrentScene()
+    {
+        int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        gameData.myScenes[currSceneIndex] = new MyEntireScene();
+
+        Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
+        foreach (GenericSaver saveScript in saveScripts)
+        {
+            SceneObject sceneObject = new SceneObject();
+            saveScript.saveMyDataToSceneObject(sceneObject);
+            gameData.myScenes[currSceneIndex].mySceneObjects.Add(sceneObject);
         }
     }
 
     public void saveSceneObjects()
     {
-        deleteSceneObjectsInLocalData();
+        deleteSceneObjectsStoredInGameData();
 
         Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
 
@@ -66,7 +95,7 @@ public class GameDataManager : MonoBehaviour
         {
             SceneObject sceneObject = new SceneObject();
             saveScript.saveMyDataToSceneObject(sceneObject);
-            localData.sceneObjects.Add(sceneObject);
+            gameData.sceneObjects.Add(sceneObject);            
         }
     }
 
@@ -74,9 +103,11 @@ public class GameDataManager : MonoBehaviour
     {
         saveSceneObjects();
 
+        saveCurrentScene();
+
         saveFile = Path.Combine(gameSavesPath, fileName + ".json");
 
-        string jsonString = JsonUtility.ToJson(localData, true);
+        string jsonString = JsonUtility.ToJson(gameData, true);
 
         File.WriteAllText(saveFile, jsonString);
     }
@@ -89,7 +120,7 @@ public class GameDataManager : MonoBehaviour
         {
             string fileContents = File.ReadAllText(saveFile);
 
-            localData = JsonUtility.FromJson<GameData>(fileContents);
+            gameData = JsonUtility.FromJson<GameData>(fileContents);
 
             loadSceneObjectsIntoWorld();
 
