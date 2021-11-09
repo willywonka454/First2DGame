@@ -10,9 +10,13 @@ public class DetectRaycast : MonoBehaviour
     public bool targetDetected;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+        GameObject greenBlobPrefab = Resources.Load<GameObject>("Green Blob");
+        GameObject radiusMarker = Instantiate(greenBlobPrefab);
+        radiusMarker.transform.localScale = new Vector2(0.3f, 0.3f);
+        radiusMarker.transform.position = shootPoint.position;
+        radiusMarker.transform.parent = shootPoint.transform;
     }
 
     // Update is called once per frame
@@ -21,8 +25,10 @@ public class DetectRaycast : MonoBehaviour
 
     }
 
-    public bool shootRay()
+    public virtual bool shootRay()
     {
+        projectRaycast();
+
         float hostDirection = Mathf.Sign(transform.localScale.x);
         Vector2 direction = new Vector2(hostDirection, 0);
         Vector2 origin = shootPoint.transform.position;
@@ -30,9 +36,31 @@ public class DetectRaycast : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance, mask);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.gameObject.tag);
+            Debug.Log(hit.collider.gameObject.tag + ". This is from ray cast.");
             return true;
         }
         return false;
+    }
+
+    public void projectRaycast()
+    {
+        GameObject rayProjection = new GameObject();
+        rayProjection.name = "Ray Cast Projection";
+        rayProjection.transform.position = shootPoint.transform.position; 
+        
+        GameObject greenBlobPrefab = Resources.Load<GameObject>("Green Blob");
+        GameObject radiusMarker = Instantiate(greenBlobPrefab);
+        radiusMarker.transform.position = rayProjection.transform.position;
+        radiusMarker.transform.localScale = new Vector2(0.1f, 0.1f);
+        radiusMarker.transform.parent = rayProjection.transform;                
+
+        RaycastProjection myScript = rayProjection.AddComponent<RaycastProjection>();
+        myScript.origin = shootPoint.transform.position;
+        myScript.maxDist = distance;
+
+        Rigidbody2D myRB = rayProjection.AddComponent<Rigidbody2D>();
+        float projectionDirX = Mathf.Sign(transform.localScale.x);
+        myRB.gravityScale = 0;
+        myRB.velocity = new Vector2(projectionDirX * 15, 0);
     }
 }
