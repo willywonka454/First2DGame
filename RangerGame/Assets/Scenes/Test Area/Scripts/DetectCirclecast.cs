@@ -9,7 +9,7 @@ public class DetectCirclecast : DetectRaycast
     // Start is called before the first frame update
     void Start()
     {
-        base.Start();
+        
     }
 
     // Update is called once per frame
@@ -39,9 +39,7 @@ public class DetectCirclecast : DetectRaycast
     {
         GameObject circleProjection = new GameObject();
         circleProjection.name = "Circle Cast Projection";
-        circleProjection.transform.position = shootPoint.transform.position;
-        circleProjection.AddComponent<Rigidbody2D>();
-        circleProjection.AddComponent<CirclecastProjection>();
+        circleProjection.transform.position = shootPoint.transform.position;               
 
         for (float angle = 0; angle < (2 * Mathf.PI); angle += (Mathf.PI / 12))
         {
@@ -51,17 +49,17 @@ public class DetectCirclecast : DetectRaycast
 
             GameObject greenBlobPrefab = Resources.Load<GameObject>("Green Blob");
             GameObject radiusMarker = Instantiate(greenBlobPrefab, pos, Quaternion.identity);
-            radiusMarker.transform.parent = circleProjection.transform;
-            radiusMarker.transform.localScale = new Vector2(0.1f, 0.1f);
-
-            CirclecastProjection myScript = circleProjection.GetComponent<CirclecastProjection>();
-            myScript.origin = shootPoint.transform.position;
-            myScript.maxDist = distance;
-
-            Rigidbody2D projectionRB = circleProjection.GetComponent<Rigidbody2D>();
-            float projectionDirX = Mathf.Sign(transform.localScale.x);
-            projectionRB.gravityScale = 0;
-            projectionRB.velocity = new Vector2(projectionDirX * 15, 0);            
+            radiusMarker.transform.localScale = new Vector2(0.2f, 0.2f);
+            radiusMarker.transform.parent = circleProjection.transform;                       
         }
+
+        RaycastProjection myScript = circleProjection.AddComponent<RaycastProjection>();
+        myScript.origin = shootPoint.transform.position;
+        myScript.maxDist = distance;
+
+        Rigidbody2D projectionRB = circleProjection.AddComponent<Rigidbody2D>();
+        float projectionDirX = Mathf.Sign(transform.localScale.x);
+        projectionRB.gravityScale = 0;
+        projectionRB.velocity = new Vector2(projectionDirX * 15, 0);
     }
 }

@@ -10,13 +10,9 @@ public class DetectRaycast : MonoBehaviour
     public bool targetDetected;
 
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
-        GameObject greenBlobPrefab = Resources.Load<GameObject>("Green Blob");
-        GameObject radiusMarker = Instantiate(greenBlobPrefab);
-        radiusMarker.transform.localScale = new Vector2(0.3f, 0.3f);
-        radiusMarker.transform.position = shootPoint.position;
-        radiusMarker.transform.parent = shootPoint.transform;
+        setUpShootPointDisplay();
     }
 
     // Update is called once per frame
@@ -49,9 +45,8 @@ public class DetectRaycast : MonoBehaviour
         rayProjection.transform.position = shootPoint.transform.position; 
         
         GameObject greenBlobPrefab = Resources.Load<GameObject>("Green Blob");
-        GameObject radiusMarker = Instantiate(greenBlobPrefab);
-        radiusMarker.transform.position = rayProjection.transform.position;
-        radiusMarker.transform.localScale = new Vector2(0.1f, 0.1f);
+        GameObject radiusMarker = Instantiate(greenBlobPrefab, rayProjection.transform.position, Quaternion.identity);
+        radiusMarker.transform.localScale = new Vector2(0.2f, 0.2f);
         radiusMarker.transform.parent = rayProjection.transform;                
 
         RaycastProjection myScript = rayProjection.AddComponent<RaycastProjection>();
@@ -62,5 +57,13 @@ public class DetectRaycast : MonoBehaviour
         float projectionDirX = Mathf.Sign(transform.localScale.x);
         myRB.gravityScale = 0;
         myRB.velocity = new Vector2(projectionDirX * 15, 0);
+    }
+
+    public void setUpShootPointDisplay()
+    {
+        GameObject greenBlobPrefab = Resources.Load<GameObject>("Green Blob");
+        GameObject spMarker = Instantiate(greenBlobPrefab, shootPoint.position, Quaternion.identity);
+        spMarker.transform.localScale = new Vector2(0.3f, 0.3f);
+        spMarker.transform.parent = shootPoint.transform;
     }
 }
