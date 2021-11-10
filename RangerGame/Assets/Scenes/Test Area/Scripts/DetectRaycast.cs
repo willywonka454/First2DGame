@@ -7,7 +7,7 @@ public class DetectRaycast : MonoBehaviour
     public Transform shootPoint;
     public float distance;
     public LayerMask mask;
-    public bool targetDetected;
+    public bool displayRay;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class DetectRaycast : MonoBehaviour
 
     public virtual bool shootRay()
     {
-        projectRaycast();
+        if (displayRay) projectRaycast();
 
         float hostDirection = Mathf.Sign(transform.localScale.x);
         Vector2 direction = new Vector2(hostDirection, 0);

@@ -33,8 +33,11 @@ public class DetectRadius : MonoBehaviour
 
             Vector2 pos = new Vector2(x, y);
 
-            var radiusMarker = Instantiate(DballPrefab, pos, Quaternion.identity);
-            radiusMarker.transform.parent = transform;
+            if (DballPrefab != null)
+            {
+                var radiusMarker = Instantiate(DballPrefab, pos, Quaternion.identity);
+                radiusMarker.transform.parent = transform;
+            }
         }
     }
 

@@ -20,7 +20,7 @@ public class DetectCirclecast : DetectRaycast
 
     public override bool shootRay()
     {
-        projectCircleCast();
+        if (displayRay) projectCircleCast();
 
         float hostDirection = Mathf.Sign(transform.localScale.x);
         Vector2 direction = new Vector2(hostDirection, 0);

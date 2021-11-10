@@ -3725,10 +3725,10 @@ GameObject:
   - component: {fileID: 528040265}
   - component: {fileID: 528040263}
   - component: {fileID: 528040268}
+  - component: {fileID: 528040272}
   - component: {fileID: 528040264}
   - component: {fileID: 528040269}
   - component: {fileID: 528040271}
-  - component: {fileID: 528040272}
   - component: {fileID: 528040270}
   - component: {fileID: 528040273}
   m_Layer: 0
@@ -3881,7 +3881,7 @@ MonoBehaviour:
   target: {fileID: 0}
   indicator: {fileID: 0}
   targetDetected: 0
-  DballPrefab: {fileID: 5439055009565513775, guid: f39e9fef3b99ce843801137e35aba903, type: 3}
+  DballPrefab: {fileID: 0}
 --- !u!114 &528040269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3917,6 +3917,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   targetDetected: 0
+  displayRay: 0
 --- !u!114 &528040271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3949,6 +3950,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   targetDetected: 0
+  displayRay: 0
   radius: 5
 --- !u!61 &528040273
 BoxCollider2D:

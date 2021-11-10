@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinDropper: {fileID: 0}
   healthScript: {fileID: 0}
+  xpReward: 10
 --- !u!114 &5306548659174366703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348694, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 0
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 449555236850348695, guid: b87b87296495c0645909fa447991b2e9, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 449555236850348698, guid: b87b87296495c0645909fa447991b2e9, type: 3}
       propertyPath: m_Name
