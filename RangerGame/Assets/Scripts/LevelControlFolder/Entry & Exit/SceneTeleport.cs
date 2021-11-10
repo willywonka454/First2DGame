@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class SceneTeleport : MonoBehaviour
 {
     // A SceneTeleport will have a target destination (a scene).
@@ -12,33 +14,26 @@ public class SceneTeleport : MonoBehaviour
     public int entryPointID = 0;
     public string entryPointName = "";
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // A SceneTeleport should be able to teleport the player to the target destination.
     public void teleport()
     {
         if (string.IsNullOrEmpty(targetSceneName))
         {
-
+            targetSceneName = null;
         }
 
-        else
+        GlobalVars.indexOfPrevLevel = SceneManager.GetActiveScene().buildIndex;
+        GlobalVars.entryPoint = new EntryPoint(entryPointID, entryPointName);
+
+        MySM.loadScene(targetSceneIndex, targetSceneName);                
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
         {
-
+            GlobalVars.playerDirX = Mathf.Sign(col.gameObject.transform.localScale.x);
+            teleport();
         }
-
-        // Save the current scene index and name, and desired entry point to GlobalVars.
-        // Or should this be handled by the script that handles saving and loading levels?
-        // Well, this script is the only thing that has access to the desired entry point.
     }
 }

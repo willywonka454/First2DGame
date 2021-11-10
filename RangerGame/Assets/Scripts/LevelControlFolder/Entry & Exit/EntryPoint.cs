@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class EntryPoint : MonoBehaviour
 {
-
+    public string name;
     public int ID;
 
-    // Start is called before the first frame update
-    void Start()
+    public EntryPoint(int newID, string newName)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ID = newID;
+        name = newName;
     }
 }
