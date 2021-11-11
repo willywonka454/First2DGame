@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GenericSaver : MonoBehaviour
 {
+    public virtual void Start()
+    {
+
+    }
+
     public virtual void saveMyDataToSceneObject(SceneObject sceneObject)
     {
         sceneObject.myPos = transform.position;        

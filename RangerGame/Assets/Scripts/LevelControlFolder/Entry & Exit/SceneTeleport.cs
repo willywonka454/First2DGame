@@ -11,28 +11,26 @@ public class SceneTeleport : MonoBehaviour
     public string targetSceneName = "";
 
     // A SceneTeleport will have a desired entry point in the target destination. 
-    public int entryPointID = 0;
+    public int entryPointID = -100;
     public string entryPointName = "";
 
     // A SceneTeleport should be able to teleport the player to the target destination.
     public void teleport()
     {
-        if (string.IsNullOrEmpty(targetSceneName))
-        {
-            targetSceneName = null;
-        }
+        if (string.IsNullOrEmpty(targetSceneName)) targetSceneName = null;
 
-        GlobalVars.indexOfPrevLevel = SceneManager.GetActiveScene().buildIndex;
-        GlobalVars.entryPoint = new EntryPoint(entryPointID, entryPointName);
-
-        MySM.loadScene(targetSceneIndex, targetSceneName);                
+        MySM.loadScene(targetSceneIndex, targetSceneName);
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
-            GlobalVars.playerDirX = Mathf.Sign(col.gameObject.transform.localScale.x);
+            GDMContainer.myGDM.gameData.entryExists = true;
+            GDMContainer.myGDM.gameData.entryID = entryPointID;
+            GDMContainer.myGDM.gameData.entryName = entryPointName;
+            GDMContainer.myGDM.gameData.entryPlayerLocalScale = col.gameObject.transform.localScale;
+
             teleport();
         }
     }

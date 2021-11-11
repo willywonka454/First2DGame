@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class EntryPoint : MonoBehaviour
 {
-    public string name;
-    public int ID;
-
-    public EntryPoint(int newID, string newName)
-    {
-        ID = newID;
-        name = newName;
-    }
+    public string myName;
+    public int ID = -100;
 }

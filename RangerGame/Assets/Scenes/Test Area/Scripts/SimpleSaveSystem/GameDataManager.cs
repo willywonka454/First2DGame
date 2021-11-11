@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 
 public class GameDataManager
-{
+{    
     public string saveFile;
     public string gameSavesPath;
     public GameData gameData = new GameData();
@@ -48,23 +48,16 @@ public class GameDataManager
         }
     }
 
-    public void deleteSceneObjectsStoredInGameData()
-    {
-        gameData.sceneObjects.Clear();
-    }
-
     public void loadCurrentScene()
     {
+        int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        MyEntireScene myCurrentScene = gameData.myScenes[currSceneIndex];
 
-    }
+        if (myCurrentScene.mySceneObjects.Count > 0) deleteSceneObjectsInWorld();
 
-    public void loadSceneObjectsIntoWorld()
-    {
-        deleteSceneObjectsInWorld();
-
-        foreach (SceneObject sceneObject in gameData.sceneObjects)
+        foreach (SceneObject sceneObject in myCurrentScene.mySceneObjects)
         {
-            GameObject myPrefab = (UnityEngine.GameObject)Resources.Load(sceneObject.myName);
+            GameObject myPrefab = Resources.Load<GameObject>(sceneObject.myName);
             GameObject myGameObject = Object.Instantiate(myPrefab);
             GenericSaver myLoaderScript = myGameObject.GetComponent<GenericSaver>();
             myLoaderScript.loadDataFromSceneObjectToMyGameObject(sceneObject);
@@ -85,24 +78,8 @@ public class GameDataManager
         }
     }
 
-    public void saveSceneObjects()
-    {
-        deleteSceneObjectsStoredInGameData();
-
-        Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
-
-        foreach (GenericSaver saveScript in saveScripts)
-        {
-            SceneObject sceneObject = new SceneObject();
-            saveScript.saveMyDataToSceneObject(sceneObject);
-            gameData.sceneObjects.Add(sceneObject);            
-        }
-    }
-
     public void saveToFile(string fileName)
     {
-        saveSceneObjects();
-
         saveCurrentScene();
 
         saveFile = Path.Combine(gameSavesPath, fileName + ".json");
@@ -121,8 +98,6 @@ public class GameDataManager
             string fileContents = File.ReadAllText(saveFile);
 
             gameData = JsonUtility.FromJson<GameData>(fileContents);
-
-            loadSceneObjectsIntoWorld();
 
             Debug.Log(fileName + " was loaded successfully.");
         }
