@@ -26,24 +26,27 @@ public class PetCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemy = petMovement.target.gameObject;
+        if (enemy != null)
+        {
+            enemy = petMovement.target.gameObject;
 
-        if (enemy.tag != "Player")
-        {            
-            Transform enemyTransform = enemy.GetComponent<Transform>();
-
-            float dist = Vector2.Distance(transform.position, enemyTransform.position);
-
-            if (dist <= petMovement.stoppingDistance + 0.01f)
+            if (enemy.tag != "Player")
             {
-                inAttackRange = true;
-            }
+                Transform enemyTransform = enemy.GetComponent<Transform>();
 
-            else
-            {
-                inAttackRange = false;
+                float dist = Vector2.Distance(transform.position, enemyTransform.position);
+
+                if (dist <= petMovement.stoppingDistance + 0.01f)
+                {
+                    inAttackRange = true;
+                }
+
+                else
+                {
+                    inAttackRange = false;
+                }
             }
-        }
+        }        
     }
 
     IEnumerator damageTick()

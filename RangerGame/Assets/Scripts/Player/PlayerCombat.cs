@@ -40,6 +40,16 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void takeDmg(int dmg)
+    {
+        healthScript.takeDmg(dmg);
+
+        if (healthScript.hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Enemy")

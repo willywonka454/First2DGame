@@ -47,7 +47,7 @@ public class WolfMovement : MonoBehaviour
 
             if (followingTarget)
             {
-                canSeeTarget = detectRadius.targetDetected;
+                canSeeTarget = detectRadius.targetDetected();
             }
 
             else

@@ -3728,8 +3728,8 @@ GameObject:
   - component: {fileID: 528040272}
   - component: {fileID: 528040264}
   - component: {fileID: 528040269}
-  - component: {fileID: 528040271}
   - component: {fileID: 528040270}
+  - component: {fileID: 528040271}
   - component: {fileID: 528040273}
   m_Layer: 0
   m_Name: wolf_12frame_run_0
@@ -3737,7 +3737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &528040263
 Animator:
   serializedVersion: 3
@@ -3875,13 +3875,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563732cde3966fa45b82809b7f3a27e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myName: detectionRadius
   center: {x: 0, y: 0}
   radius: 15
   targetTag: Player
   target: {fileID: 0}
-  indicator: {fileID: 0}
-  targetDetected: 0
-  DballPrefab: {fileID: 0}
+  display: 0
+  indicator: {fileID: 1668227495}
+  DballPrefab: {fileID: 5439055009565513775, guid: f39e9fef3b99ce843801137e35aba903, type: 3}
+  degreeInterval: 12
+  dballSize: 0.42
 --- !u!114 &528040269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3906,17 +3909,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528040262}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aed5af8205270840af4e42854485a6e, type: 3}
+  m_Script: {fileID: 11500000, guid: a76abed3f8390ed4880f796ac932052e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 1591364541}
-  distance: 15
-  mask:
-    serializedVersion: 2
-    m_Bits: 16384
-  displayRay: 0
+  wolfMovement: {fileID: 0}
+  attackRadius: {fileID: 0}
+  attackSpeed: 1
+  attacking: 0
 --- !u!114 &528040271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3924,13 +3925,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528040262}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8525721b43f30a4a946ad5a33f306a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 563732cde3966fa45b82809b7f3a27e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  jumpForce: 0
+  myName: attackRadius
+  center: {x: 0, y: 0}
+  radius: 5
+  targetTag: Player
+  target: {fileID: 0}
+  display: 1
+  indicator: {fileID: 0}
+  DballPrefab: {fileID: 5439055009565513775, guid: f39e9fef3b99ce843801137e35aba903, type: 3}
+  degreeInterval: 6
+  dballSize: 0.2
 --- !u!114 &528040272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3948,7 +3957,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 16384
-  displayRay: 1
+  displayRay: 0
   radius: 5
 --- !u!61 &528040273
 BoxCollider2D:
@@ -4680,7 +4689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781410403525506015, guid: 828e02030e1915c4b99c9ad114d96ff7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6781410403753441348, guid: 828e02030e1915c4b99c9ad114d96ff7, type: 3}
       propertyPath: m_Enabled
@@ -4688,7 +4697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781410404405982286, guid: 828e02030e1915c4b99c9ad114d96ff7, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8225898919487384474, guid: 828e02030e1915c4b99c9ad114d96ff7, type: 3}
       propertyPath: m_Enabled
@@ -11581,7 +11590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1814344490655541339, guid: c7258a7e52c560840942d51825c9d7ec, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1814344490655541340, guid: c7258a7e52c560840942d51825c9d7ec, type: 3}
       propertyPath: m_RootOrder
