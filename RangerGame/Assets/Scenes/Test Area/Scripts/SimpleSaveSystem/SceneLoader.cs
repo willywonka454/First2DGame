@@ -9,7 +9,6 @@ public class SceneLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GDMContainer.myGDM.gameData.currSceneIndex = SceneManager.GetActiveScene().buildIndex;
         GDMContainer.myGDM.loadCurrentScene();
     }
 }

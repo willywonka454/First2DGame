@@ -53,7 +53,7 @@ public class GameDataManager
         int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
         MyEntireScene myCurrentScene = gameData.myScenes[currSceneIndex];
 
-        if (myCurrentScene.mySceneObjects.Count > 0) deleteSceneObjectsInWorld();
+        if (myCurrentScene.hasBeenSaved) deleteSceneObjectsInWorld();
 
         foreach (SceneObject sceneObject in myCurrentScene.mySceneObjects)
         {
@@ -76,6 +76,8 @@ public class GameDataManager
             saveScript.saveMyDataToSceneObject(sceneObject);
             gameData.myScenes[currSceneIndex].mySceneObjects.Add(sceneObject);
         }
+
+        gameData.myScenes[currSceneIndex].hasBeenSaved = true;
     }
 
     public void saveToFile(string fileName)

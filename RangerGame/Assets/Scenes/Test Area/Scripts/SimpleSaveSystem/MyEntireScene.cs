@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class MyEntireScene
 {
+    public bool hasBeenSaved = false;
     public List<SceneObject> mySceneObjects = new List<SceneObject>();
 }

@@ -50,9 +50,13 @@ public class WolfCombat : MonoBehaviour
     {
         while (true)
         {
-            if (attacking) attackPlayer();
+            if (attacking)
+            {
+                attackPlayer();
+                yield return new WaitForSeconds(attackSpeed);
+            }
 
-            yield return new WaitForSeconds(attackSpeed);
+            yield return null;
         }
     }
 }

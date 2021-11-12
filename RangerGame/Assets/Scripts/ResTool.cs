@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ResTool : MonoBehaviour
 {
 
-    public int width = 1211;
+    /*public int width = 1211;
     public int height = 531;
 
     public Text widthText;
@@ -53,5 +53,5 @@ public class ResTool : MonoBehaviour
         {
             Screen.SetResolution(width, height, false);
         }
-    }
+    }*/
 }

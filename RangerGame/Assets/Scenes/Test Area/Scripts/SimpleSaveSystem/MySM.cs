@@ -6,18 +6,17 @@ using UnityEngine.SceneManagement;
 
 public static class MySM
 {
-    public static void loadScene(int index = 0, string name = null)
+    public static void loadScene(string name)
     {
-        if (name == null)
-        {
-            SceneManager.LoadScene(index);
-        }
+        GDMContainer.myGDM.saveCurrentScene();
 
-        else
-        {
-            SceneManager.LoadScene(name);
-        }
+        SceneManager.LoadScene(name);       
+    }
 
-        //GDMContainer.myGDM.saveCurrentScene();
+    public static void loadScene(int index)
+    {
+        GDMContainer.myGDM.saveCurrentScene();
+
+        SceneManager.LoadScene(index);
     }
 }

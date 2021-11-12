@@ -9,45 +9,10 @@ public class MyRangerSaver : GenericSaver
     // Start is called before the first frame update
     public override void Start()
     {
+        GameData gameData = GDMContainer.myGDM.gameData;
         int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        MyEntireScene currScene = GDMContainer.myGDM.gameData.myScenes[currSceneIndex];
-
-        if (currScene.mySceneObjects.Count <= 0)
-        {
-            GameData myGameData = GDMContainer.myGDM.gameData;
-
-            if (myGameData.entryExists)
-            {
-                Object[] entryPoints = Object.FindObjectsOfType<EntryPoint>();
-
-                if (string.IsNullOrEmpty(myGameData.entryName))
-                {
-                    foreach (EntryPoint ep in entryPoints)
-                    {
-                        if (ep.ID == myGameData.entryID)
-                        {
-                            transform.position = ep.gameObject.transform.position;
-                            transform.localScale = myGameData.entryPlayerLocalScale;
-                        }
-                    }
-                }
-
-                else
-                {
-                    foreach (EntryPoint ep in entryPoints)
-                    {
-                        if (ep.myName == myGameData.entryName)
-                        {
-                            transform.position = ep.gameObject.transform.position;
-                            transform.localScale = myGameData.entryPlayerLocalScale;
-                        }
-                    }
-                }
-
-                myGameData.entryExists = false;
-            }
-        }
+        MyEntireScene currScene = gameData.myScenes[currSceneIndex];
+        if (!currScene.hasBeenSaved && gameData.entryPointData != null) assignPlayerToEntryPoint();
     }
 
     public override void saveMyDataToSceneObject(SceneObject sceneObject)
@@ -59,5 +24,29 @@ public class MyRangerSaver : GenericSaver
     public override void loadDataFromSceneObjectToMyGameObject(SceneObject sceneObject)
     {
         base.loadDataFromSceneObjectToMyGameObject(sceneObject);
+
+        if (GDMContainer.myGDM.gameData.entryPointData != null) assignPlayerToEntryPoint();
+    }
+
+    public void assignPlayerToEntryPoint()
+    {
+        Vector3 newPos = findMyEntryPointPos();
+        transform.position = newPos;
+        transform.localScale = GDMContainer.myGDM.gameData.entryPointData.playerLocalScaleOnArrival;
+    }
+
+    public Vector3 findMyEntryPointPos()
+    {
+        string myEntryPointName = GDMContainer.myGDM.gameData.entryPointData.myName;
+        Object[] entryPoints = Object.FindObjectsOfType<EntryPoint>();        
+        foreach (EntryPoint entryPoint in entryPoints)
+        {
+            if (entryPoint.myName == myEntryPointName)
+            {
+                return entryPoint.transform.position;
+            }
+        }
+
+        return new Vector3(0, 0, 0);
     }
 }
