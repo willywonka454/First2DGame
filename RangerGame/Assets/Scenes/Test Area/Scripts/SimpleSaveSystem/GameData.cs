@@ -9,15 +9,15 @@ public class GameData
 {
     public MyEntireScene[] myScenes;
     public int currSceneIndex;
-    public EntryPointData entryPointData = null;
+    public EntryPointData entryPointData;
 
     public GameData()
-    {
+    {        
         myScenes = new MyEntireScene[SceneManager.sceneCountInBuildSettings];
-
         for (int i = 0; i < myScenes.Length; i++)
         {
             myScenes[i] = new MyEntireScene();
         }
+        entryPointData = new EntryPointData();
     }
 }

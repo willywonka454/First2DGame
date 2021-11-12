@@ -13,10 +13,18 @@ public class EntryPointData
 {
     public string myName;
     public Vector3 playerLocalScaleOnArrival;
+    public bool isEmpty;
 
     public EntryPointData(string newName, Vector3 newPlayerScale)
     {
         myName = newName;
         playerLocalScaleOnArrival = newPlayerScale;
+        if (string.IsNullOrEmpty(myName)) isEmpty = true;
+        else isEmpty = false;
+    }
+
+    public EntryPointData()
+    {
+        isEmpty = true;
     }
 }

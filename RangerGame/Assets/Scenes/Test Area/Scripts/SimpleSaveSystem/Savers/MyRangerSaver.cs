@@ -9,10 +9,9 @@ public class MyRangerSaver : GenericSaver
     // Start is called before the first frame update
     public override void Start()
     {
-        GameData gameData = GDMContainer.myGDM.gameData;
         int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        MyEntireScene currScene = gameData.myScenes[currSceneIndex];
-        if (!currScene.hasBeenSaved && gameData.entryPointData != null) assignPlayerToEntryPoint();
+        MyEntireScene currScene = GDMContainer.myGDM.gameData.myScenes[currSceneIndex];
+        if (!currScene.hasBeenSaved && entryPointExists()) assignPlayerToEntryPoint();
     }
 
     public override void saveMyDataToSceneObject(SceneObject sceneObject)
@@ -24,8 +23,11 @@ public class MyRangerSaver : GenericSaver
     public override void loadDataFromSceneObjectToMyGameObject(SceneObject sceneObject)
     {
         base.loadDataFromSceneObjectToMyGameObject(sceneObject);
-
-        if (GDMContainer.myGDM.gameData.entryPointData != null) assignPlayerToEntryPoint();
+        
+        if (entryPointExists())
+        {
+            assignPlayerToEntryPoint();
+        }
     }
 
     public void assignPlayerToEntryPoint()
@@ -33,6 +35,7 @@ public class MyRangerSaver : GenericSaver
         Vector3 newPos = findMyEntryPointPos();
         transform.position = newPos;
         transform.localScale = GDMContainer.myGDM.gameData.entryPointData.playerLocalScaleOnArrival;
+        GDMContainer.myGDM.gameData.entryPointData.isEmpty = true;
     }
 
     public Vector3 findMyEntryPointPos()
@@ -48,5 +51,13 @@ public class MyRangerSaver : GenericSaver
         }
 
         return new Vector3(0, 0, 0);
+    }
+
+    public bool entryPointExists()
+    {
+        GameData gameData = GDMContainer.myGDM.gameData;
+
+        if (gameData.entryPointData.isEmpty) return false;
+        else return true;
     }
 }

@@ -101,6 +101,8 @@ public class GameDataManager
 
             gameData = JsonUtility.FromJson<GameData>(fileContents);
 
+            SceneManager.LoadScene(gameData.currSceneIndex);
+
             Debug.Log(fileName + " was loaded successfully.");
         }
 

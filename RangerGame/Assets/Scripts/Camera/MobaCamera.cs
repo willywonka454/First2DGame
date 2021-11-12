@@ -33,6 +33,7 @@ public class MobaCamera : MonoBehaviour
     void Start()
     {
         camRbody = cam.GetComponent<Rigidbody2D>();
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
