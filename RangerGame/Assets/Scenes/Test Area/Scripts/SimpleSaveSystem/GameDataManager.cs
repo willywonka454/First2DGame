@@ -67,7 +67,10 @@ public class GameDataManager
     public void saveCurrentScene()
     {
         int currSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        string sceneNameBeforeWipe = gameData.myScenes[currSceneIndex].myName;
         gameData.myScenes[currSceneIndex] = new MyEntireScene();
+        gameData.myScenes[currSceneIndex].myName = sceneNameBeforeWipe;
 
         Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();
         foreach (GenericSaver saveScript in saveScripts)
