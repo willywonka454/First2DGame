@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoveTowardsTarget : MonoBehaviour
 {
-    public bool triedLookingForTarget;
     public string targetTag = "Player";
     public GameObject target;
     public Vector2 targetPos;
@@ -26,11 +25,7 @@ public class MoveTowardsTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null && !triedLookingForTarget)
-        {
-            target = GameObject.FindWithTag(targetTag);
-            triedLookingForTarget = true;
-        }
+
     }
 
     public void followTarget()

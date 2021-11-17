@@ -84,7 +84,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 19.67
+  orthographic size: 19.32
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -165,5 +165,6 @@ MonoBehaviour:
   camSpeed: 20
   offsetX: 0
   offsetY: 0
+  player: {fileID: 0}
   playerTrans: {fileID: 0}
-  triedToFindPlayer: 0
+  triedLookingForPlayer: 0

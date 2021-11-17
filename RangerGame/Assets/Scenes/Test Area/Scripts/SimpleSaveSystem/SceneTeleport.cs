@@ -25,7 +25,26 @@ public class SceneTeleport : MonoBehaviour
         if (col.gameObject.tag == "Player" && canBeTriggeredByCollision)
         {
             GDMContainer.myGDM.gameData.entryPointData = new EntryPointData(entryPointName, col.gameObject.transform.localScale);
-            teleport();
+
+            GameObject player = col.gameObject;
+            GenericSaver playerSaver = col.gameObject.GetComponent<GenericSaver>();
+
+            SceneObject playerSceneObject = new SceneObject();
+            playerSaver.saveMyDataToSceneObject(playerSceneObject);
+
+            MyEntireScene targetScene = GDMContainer.myGDM.returnSceneFromName(targetSceneName);
+            targetScene.mySceneObjects.Add(playerSceneObject);
+
+            StartCoroutine(destroyPlayerAndThenTeleport(player));
         }
+    }
+
+    IEnumerator destroyPlayerAndThenTeleport(GameObject player)
+    {
+        Destroy(player);
+
+        yield return null;
+
+        teleport();
     }
 }

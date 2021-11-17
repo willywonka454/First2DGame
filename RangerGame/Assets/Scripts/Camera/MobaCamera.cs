@@ -28,7 +28,6 @@ public class MobaCamera : MonoBehaviour
 
     public GameObject player;
     public Transform playerTrans;
-    public bool triedLookingForPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +36,7 @@ public class MobaCamera : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
+            Debug.Log("Found the player.");
             playerTrans = player.transform;
         }        
     }
@@ -44,16 +44,6 @@ public class MobaCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null && !triedLookingForPlayer)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                playerTrans = player.transform;
-                triedLookingForPlayer = true;
-            }            
-        }
-
         mousePos = Input.mousePosition;
         movingCamUp = mousePos.y > (Screen.height * topBorder);
         movingCamDown = mousePos.y < (Screen.height * botBorder);

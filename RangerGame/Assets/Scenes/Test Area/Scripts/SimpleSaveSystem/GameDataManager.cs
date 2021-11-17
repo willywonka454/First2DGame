@@ -38,6 +38,30 @@ public class GameDataManager
         
     }
 
+    public void prepareForNewGame()
+    {
+        MyEntireScene firstScene = returnSceneFromName(gameData.firstSceneName);
+        SceneObject player = new SceneObject();
+        player.myName = "MyRanger";
+        player.myLocalScale = new Vector3(1, 1, 1);
+        firstScene.mySceneObjects.Add(player);
+    }
+
+    public MyEntireScene returnSceneFromName(string sceneName)
+    {
+        MyEntireScene retVal = null;
+
+        for (int i = 0; i < gameData.myScenes.Length; i++)
+        {
+            if (gameData.myScenes[i].myName == sceneName)
+            {
+                retVal = gameData.myScenes[i];
+            }
+        }
+
+        return retVal;
+    }
+
     public void deleteSceneObjectsInWorld()
     {
         Object[] saveScripts = Object.FindObjectsOfType<GenericSaver>();

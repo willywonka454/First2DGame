@@ -10,6 +10,8 @@ public class GameData
 {
     public MyEntireScene[] myScenes;
     public int currSceneIndex;
+    public string firstSceneName;
+
     public EntryPointData entryPointData;
     
     public GameData()
@@ -20,6 +22,8 @@ public class GameData
             myScenes[i] = new MyEntireScene();
             myScenes[i].myName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
         }
+
+        firstSceneName = "Open plains";
 
         entryPointData = new EntryPointData();
     }

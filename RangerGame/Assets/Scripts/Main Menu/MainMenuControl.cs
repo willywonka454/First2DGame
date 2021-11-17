@@ -35,7 +35,8 @@ public class MainMenuControl : MonoBehaviour
     // New game methods
     public void newGame()
     {
-        SceneManager.LoadScene("Village 1");
+        GDMContainer.myGDM.prepareForNewGame();
+        SceneManager.LoadScene(GDMContainer.myGDM.gameData.firstSceneName);
     }
 
     // Exit and credit methods

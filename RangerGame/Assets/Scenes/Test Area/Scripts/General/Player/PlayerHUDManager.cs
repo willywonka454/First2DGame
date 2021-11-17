@@ -11,7 +11,6 @@ public class PlayerHUDManager : MonoBehaviour
     public GameObject player;
     public MyHealth playerHealth;
     public PlayerInventoryV2 playerInventory;
-    public bool triedLookingForPlayer;
 
     [Header("UI related")]
     public TMP_Text playerHealthText;
@@ -29,14 +28,6 @@ public class PlayerHUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null && !triedLookingForPlayer)
-        {
-            player = GameObject.FindWithTag("Player");
-            playerHealth = player.GetComponent<MyHealth>();
-            playerInventory = player.GetComponent<PlayerInventoryV2>();
-            triedLookingForPlayer = true;
-        }
-
         playerHealthText.text = "" + playerHealth.myHP;
         playerArrowsText.text = "x" + playerInventory.arrows;
         playerCoinsText.text = "x" + playerInventory.coins;
