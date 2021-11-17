@@ -67,7 +67,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.31132078, g: 0.073229186, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.4811321, g: 0.25158414, b: 0.14751692, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -84,7 +84,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.4
+  orthographic size: 19.67
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -161,8 +161,9 @@ MonoBehaviour:
   rightBorder: 0.97
   mousePos: {x: 0, y: 0, z: 0}
   cam: {fileID: 2987059714701167188}
-  camRbody: {fileID: 0}
+  camRbody: {fileID: 2987059714701167199}
   camSpeed: 20
   offsetX: 0
   offsetY: 0
   playerTrans: {fileID: 0}
+  triedToFindPlayer: 0

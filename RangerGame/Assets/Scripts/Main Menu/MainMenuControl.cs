@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -34,7 +35,7 @@ public class MainMenuControl : MonoBehaviour
     // New game methods
     public void newGame()
     {
-        LevelControl.loadLevelByName("Forest 2");
+        SceneManager.LoadScene("Village 1");
     }
 
     // Exit and credit methods

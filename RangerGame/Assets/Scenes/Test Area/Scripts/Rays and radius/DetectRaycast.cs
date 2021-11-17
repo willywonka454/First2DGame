@@ -10,13 +10,13 @@ public class DetectRaycast : MonoBehaviour
     public bool displayRay;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        //setUpShootPointDisplay();
+        
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
 
     }

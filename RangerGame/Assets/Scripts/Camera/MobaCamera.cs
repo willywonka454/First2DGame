@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MobaCamera : MonoBehaviour
 {
-
     public float topBorder;
     public float botBorder;
     public float leftBorder;
@@ -27,20 +26,35 @@ public class MobaCamera : MonoBehaviour
     bool customLock;
     bool camLocked;
 
+    public GameObject player;
     public Transform playerTrans;
+    public bool triedLookingForPlayer;
 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
         camRbody = cam.GetComponent<Rigidbody2D>();
-        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerTrans = player.transform;
+        }        
     }
 
     // Update is called once per frame
     void Update()
     {
-        mousePos = Input.mousePosition;
+        if (player == null && !triedLookingForPlayer)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTrans = player.transform;
+                triedLookingForPlayer = true;
+            }            
+        }
 
+        mousePos = Input.mousePosition;
         movingCamUp = mousePos.y > (Screen.height * topBorder);
         movingCamDown = mousePos.y < (Screen.height * botBorder);
         movingCamLeft = mousePos.x < (Screen.width * leftBorder);
@@ -59,8 +73,11 @@ public class MobaCamera : MonoBehaviour
                 customLock = true;
                 defaultLock = false;
 
-                offsetX = cam.GetComponent<Transform>().position.x - playerTrans.position.x;
-                offsetY = cam.GetComponent<Transform>().position.y - playerTrans.position.y;
+                if (playerTrans != null)
+                {
+                    offsetX = cam.GetComponent<Transform>().position.x - playerTrans.position.x;
+                    offsetY = cam.GetComponent<Transform>().position.y - playerTrans.position.y;
+                }
             }
         }
 
@@ -105,6 +122,10 @@ public class MobaCamera : MonoBehaviour
 
     public void followPlayer()
     {
-        transform.position = new Vector3(playerTrans.position.x + offsetX, playerTrans.position.y + offsetY, transform.position.z);
+        if (playerTrans != null)
+        {
+            transform.position = new Vector3(playerTrans.position.x + offsetX, playerTrans.position.y + offsetY, transform.position.z);
+        }        
     }
+        
 }

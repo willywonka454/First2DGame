@@ -12,6 +12,7 @@ public class DetectRadius : MonoBehaviour
     public Vector2 center;
     public float radius = 5f;
 
+    public bool triedLookingForTarget;
     public string targetTag = "Player";
     public GameObject target;
 
@@ -50,6 +51,12 @@ public class DetectRadius : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null && !triedLookingForTarget)
+        {
+            target = GameObject.FindWithTag(targetTag);
+            triedLookingForTarget = true;
+        }
+
         if (display)
         {
             if (indicator != null)

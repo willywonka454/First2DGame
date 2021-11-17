@@ -7,13 +7,13 @@ public class DetectCirclecast : DetectRaycast
     public float radius;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         
     }
@@ -29,7 +29,6 @@ public class DetectCirclecast : DetectRaycast
         RaycastHit2D hit = Physics2D.CircleCast(origin, radius, direction, distance, mask);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.gameObject.tag + ". This is from circle cast.");
             return true;
         }
         return false;

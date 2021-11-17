@@ -1059,6 +1059,10 @@ PrefabInstance:
       propertyPath: targetSceneName
       value: My Area
       objectReference: {fileID: 0}
+    - target: {fileID: 5133649289994368253, guid: cedab45f60ca90a47b0cd14a308ac8e5, type: 3}
+      propertyPath: canBeTriggeredByCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5133649289994368255, guid: cedab45f60ca90a47b0cd14a308ac8e5, type: 3}
       propertyPath: m_RootOrder
       value: 8

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneTeleport : MonoBehaviour
 {
+    public bool canBeTriggeredByCollision;
+
     // A SceneTeleport will have a target destination (a scene).
     public string targetSceneName = "";
 
@@ -20,7 +22,7 @@ public class SceneTeleport : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && canBeTriggeredByCollision)
         {
             GDMContainer.myGDM.gameData.entryPointData = new EntryPointData(entryPointName, col.gameObject.transform.localScale);
             teleport();
