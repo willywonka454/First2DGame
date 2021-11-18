@@ -6,15 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneTeleport : MonoBehaviour
 {
+    public GameObject player;
     public bool canBeTriggeredByCollision;
-
-    // A SceneTeleport will have a target destination (a scene).
     public string targetSceneName = "";
-
-    // A SceneTeleport will have a desired entry point in the target destination. 
     public string entryPointName = "";
 
-    // A SceneTeleport should be able to teleport the player to the target destination.
     public void teleport()
     {
         MySM.loadScene(targetSceneName);
@@ -26,25 +22,32 @@ public class SceneTeleport : MonoBehaviour
         {
             GDMContainer.myGDM.gameData.entryPointData = new EntryPointData(entryPointName, col.gameObject.transform.localScale);
 
-            GameObject player = col.gameObject;
-            GenericSaver playerSaver = col.gameObject.GetComponent<GenericSaver>();
+            player = col.gameObject;
 
-            SceneObject playerSceneObject = new SceneObject();
-            playerSaver.saveMyDataToSceneObject(playerSceneObject);
-
-            MyEntireScene targetScene = GDMContainer.myGDM.returnSceneFromName(targetSceneName);
-            targetScene.mySceneObjects.Add(playerSceneObject);
-
-            StartCoroutine(destroyPlayerAndThenTeleport(player));
+            StartCoroutine(destroyPlayerAndThenTeleport());
         }
     }
 
-    IEnumerator destroyPlayerAndThenTeleport(GameObject player)
+    IEnumerator destroyPlayerAndThenTeleport()
     {
+        addPlayerToNextScene();
+
         Destroy(player);
 
         yield return null;
 
         teleport();
+    }
+
+    public void addPlayerToNextScene()
+    {
+        GDMContainer.myGDM.gameData.entryPointData = new EntryPointData(entryPointName, player.transform.localScale);
+
+        GenericSaver playerSaver = player.GetComponent<GenericSaver>();
+        SceneObject playerSceneObject = new SceneObject();
+        playerSaver.saveMyDataToSceneObject(playerSceneObject);
+
+        MyEntireScene targetScene = GDMContainer.myGDM.returnSceneFromName(targetSceneName);
+        targetScene.mySceneObjects.Add(playerSceneObject);
     }
 }

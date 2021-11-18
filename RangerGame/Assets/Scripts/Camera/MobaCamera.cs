@@ -36,7 +36,6 @@ public class MobaCamera : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            Debug.Log("Found the player.");
             playerTrans = player.transform;
         }        
     }

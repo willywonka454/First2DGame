@@ -11,6 +11,7 @@ public class InnScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public GameObject myText;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,13 +26,11 @@ public class InnScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Mouse enter");
         myText.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Mouse exit");
         myText.SetActive(false);
     }
 }
