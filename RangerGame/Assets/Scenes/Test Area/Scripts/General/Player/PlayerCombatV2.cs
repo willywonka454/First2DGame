@@ -20,4 +20,20 @@ public class PlayerCombatV2 : Combat
             myCrossbow.Shoot();
         }
     }
+
+    public override void die()
+    {
+        SceneObject playerCopy = new SceneObject();
+        GenericSaver playerSaver = GetComponent<GenericSaver>();
+        playerSaver.saveMyDataToSceneObject(playerCopy);
+
+        int nearestVillageIndex = GDMContainer.myGDM.gameData.nearestVillageIndex;
+        GDMContainer.myGDM.gameData.myScenes[nearestVillageIndex].mySceneObjects.Add(playerCopy);
+
+        GameObject cameraSpaceUI = GameObject.FindWithTag("Camera space UI");
+        CameraSpaceUIControl camSpaceUIControl = cameraSpaceUI.GetComponent<CameraSpaceUIControl>();
+        camSpaceUIControl.respawnMenu.SetActive(true);
+
+        base.die();        
+    }
 }

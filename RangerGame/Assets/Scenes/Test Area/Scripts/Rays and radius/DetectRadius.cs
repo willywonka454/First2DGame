@@ -28,6 +28,8 @@ public class DetectRadius : MonoBehaviour
 
         if (display)
         {
+            center = transform.position;
+
             if (indicator != null) indicator.gameObject.SetActive(true);
 
             for (float angle = 0; angle < (2 * Mathf.PI); angle += (Mathf.PI / degreeInterval))

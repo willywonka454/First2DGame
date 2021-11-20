@@ -11,6 +11,7 @@ public class PlayerHUDManager : MonoBehaviour
     public GameObject player;
     public MyHealth playerHealth;
     public PlayerInventoryV2 playerInventory;
+    public bool hasSetHPOnDeath;
 
     [Header("UI related")]
     public TMP_Text playerHealthText;
@@ -21,15 +22,27 @@ public class PlayerHUDManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        playerHealth = player.GetComponent<MyHealth>();
-        playerInventory = player.GetComponent<PlayerInventoryV2>();
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<MyHealth>();
+            playerInventory = player.GetComponent<PlayerInventoryV2>();
+        }        
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerHealthText.text = "" + playerHealth.myHP;
-        playerArrowsText.text = "x" + playerInventory.arrows;
-        playerCoinsText.text = "x" + playerInventory.coins;
+        if (player != null)
+        {
+            playerHealthText.text = "" + playerHealth.myHP;
+            playerArrowsText.text = "x" + playerInventory.arrows;
+            playerCoinsText.text = "x" + playerInventory.coins;
+        }
+
+        else if(player == null && !hasSetHPOnDeath)
+        {
+            playerHealthText.text = "" + (0);
+            hasSetHPOnDeath = true;
+        }
     }
 }

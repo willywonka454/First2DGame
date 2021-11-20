@@ -24,6 +24,8 @@ TagManager:
   - Dragon
   - Pet
   - Green blob
+  - Scene loader
+  - Camera space UI
   layers:
   - Default
   - TransparentFX

@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Awake()
-    {        
+    {
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        if (activeScene.name.Contains("Village"))
+        {
+            GDMContainer.myGDM.gameData.nearestVillageName = activeScene.name;
+            GDMContainer.myGDM.gameData.nearestVillageIndex = activeScene.buildIndex;
+        }
         GDMContainer.myGDM.loadCurrentScene();
-        GDMContainer.myGDM.gameData.currSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        GDMContainer.myGDM.gameData.currSceneIndex = activeScene.buildIndex;
     }
 }

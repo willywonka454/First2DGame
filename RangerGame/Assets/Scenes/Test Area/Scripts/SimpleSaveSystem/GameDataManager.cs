@@ -43,6 +43,7 @@ public class GameDataManager
         MyEntireScene firstScene = returnSceneFromName(gameData.firstSceneName);
         SceneObject player = new SceneObject();
         player.myName = "MyRanger";
+        player.myPos = new Vector3(-31, -4, 0);
         player.myLocalScale = new Vector3(1, 1, 1);
         firstScene.mySceneObjects.Add(player);
     }

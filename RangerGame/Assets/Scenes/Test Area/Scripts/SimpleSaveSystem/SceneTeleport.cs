@@ -11,11 +11,6 @@ public class SceneTeleport : MonoBehaviour
     public string targetSceneName = "";
     public string entryPointName = "";
 
-    public void teleport()
-    {
-        MySM.loadScene(targetSceneName);
-    }
-
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player" && canBeTriggeredByCollision)
@@ -24,8 +19,13 @@ public class SceneTeleport : MonoBehaviour
 
             player = col.gameObject;
 
-            StartCoroutine(destroyPlayerAndThenTeleport());
+            destroyPlayerAndThenTeleportWrapper();
         }
+    }
+
+    public void destroyPlayerAndThenTeleportWrapper()
+    {
+        StartCoroutine(destroyPlayerAndThenTeleport());
     }
 
     IEnumerator destroyPlayerAndThenTeleport()
@@ -37,6 +37,11 @@ public class SceneTeleport : MonoBehaviour
         yield return null;
 
         teleport();
+    }
+
+    public void teleport()
+    {
+        MySM.loadScene(targetSceneName);
     }
 
     public void addPlayerToNextScene()

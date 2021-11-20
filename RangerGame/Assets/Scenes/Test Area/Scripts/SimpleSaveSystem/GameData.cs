@@ -12,6 +12,11 @@ public class GameData
     public int currSceneIndex;
     public string firstSceneName;
 
+    public string nearestVillageName;
+    public int nearestVillageIndex;
+
+    public bool respawnMenuIsActive;
+
     public EntryPointData entryPointData;
     
     public GameData()
@@ -23,7 +28,7 @@ public class GameData
             myScenes[i].myName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
         }
 
-        firstSceneName = "Open plains";
+        firstSceneName = "Village 1";
 
         entryPointData = new EntryPointData();
     }
