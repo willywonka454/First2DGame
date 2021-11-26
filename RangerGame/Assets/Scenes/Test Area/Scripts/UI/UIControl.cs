@@ -60,21 +60,10 @@ public class UIControl : MonoBehaviour
         {
             escapeMenu.SetActive(false);
 
-            GDMContainer.myGDM.gameData.playerControls = true;
-            GDMContainer.myGDM.gameData.UIInteraction = true;
-
-            if (GDMContainer.myGDM.gameData.gamePaused == false) Time.timeScale = 1;
-            if (innStartMenu.activeSelf || shopMenu.activeSelf) GDMContainer.myGDM.gameData.playerControls = false;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && !escapeMenu.activeSelf)
         {
-            escapeMenu.SetActive(true);
-
-            GDMContainer.myGDM.gameData.playerControls = false;
-            GDMContainer.myGDM.gameData.UIInteraction = false;
-
-            if (Time.timeScale == 0) GDMContainer.myGDM.gameData.gamePaused = true;
-            Time.timeScale = 0;            
+            escapeMenu.SetActive(true);       
         }
     }
 }

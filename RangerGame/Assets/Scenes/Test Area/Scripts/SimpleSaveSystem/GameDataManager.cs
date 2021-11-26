@@ -54,6 +54,8 @@ public class GameDataManager
         player.myPos = new Vector3(-31, -4, 0);
         player.myLocalScale = new Vector3(1, 1, 1);
         firstScene.mySceneObjects.Add(player);
+
+        gameData.entryPointData = new EntryPointData("Inn game start", player.myLocalScale);
     }
 
     public MyEntireScene returnSceneFromName(string sceneName)

@@ -32,6 +32,9 @@ public class MainMenuControl : MonoBehaviour
 
     [Header("Variables")]
     public bool amEscapeMenu;
+    public bool prevGamePaused;
+    public bool prevPlayerControls;
+    public bool prevUIInteraction;
 
     void Start()
     {        
@@ -55,28 +58,50 @@ public class MainMenuControl : MonoBehaviour
 
     void OnEnable()
     {
+        if (amEscapeMenu)
+        {
+            prevGamePaused = GDMContainer.myGDM.gameData.gamePaused;
+            prevPlayerControls = GDMContainer.myGDM.gameData.playerControls;
+            prevUIInteraction = GDMContainer.myGDM.gameData.UIInteraction;
 
+            GDMContainer.myGDM.gameData.gamePaused = true;
+            GDMContainer.myGDM.gameData.playerControls = false;
+            GDMContainer.myGDM.gameData.UIInteraction = false;
+
+            Time.timeScale = 0;
+        }
     }
 
     void OnDisable()
     {
+        if (amEscapeMenu)
+        {
+            GDMContainer.myGDM.gameData.gamePaused = prevGamePaused;
+            GDMContainer.myGDM.gameData.playerControls = prevPlayerControls;
+            GDMContainer.myGDM.gameData.UIInteraction = prevUIInteraction;
 
+            if (GDMContainer.myGDM.gameData.gamePaused) Time.timeScale = 0;
+            else Time.timeScale = 1;
+        }        
     }
 
     // In game methods
     public void resume()
     {
-        Debug.Log("Finish resume method.");
+        gameObject.SetActive(false);
     }
 
     public void returnToMainMenu()
     {
-        Debug.Log("Finish returnToMainMenu method.");
+        saveToFileFromAutoSave();
+        gameObject.SetActive(false);   
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void quitFromInGame()
     {
-        Debug.Log("Finish exitFromInGame method.");
+        saveToFileFromAutoSave();
+        Application.Quit();        
     }
 
     public void showMainPanelOnly()
@@ -84,13 +109,31 @@ public class MainMenuControl : MonoBehaviour
         
     }
 
-    public void saveToFile()
+    public void saveToFile(string fileName)
     {
-        string fileName = saveAsInputField.text;
-        GDMContainer.myGDM.saveToFile(fileName);
+        GDMContainer.myGDM.gameData.gamePaused = prevGamePaused;
+        GDMContainer.myGDM.gameData.playerControls = prevPlayerControls;
+        GDMContainer.myGDM.gameData.UIInteraction = prevUIInteraction;
 
+        GDMContainer.myGDM.saveToFile(fileName);
         ButtonListTest savesList = saveFileList.GetComponent<ButtonListTest>();
         savesList.insertNewSaveAtRuntime(fileName);
+
+        GDMContainer.myGDM.gameData.gamePaused = true;
+        GDMContainer.myGDM.gameData.playerControls = false;
+        GDMContainer.myGDM.gameData.UIInteraction = false;
+    }
+
+    public void saveToFileFromUserInput()
+    {
+        string fileName = saveAsInputField.text;
+        saveToFile(fileName);
+    }
+
+    public void saveToFileFromAutoSave()
+    {
+        string fileName = "autosave";
+        saveToFile(fileName);
     }
 
     // New game methods

@@ -2615,6 +2615,9 @@ MonoBehaviour:
   returnToMainMenuButton: {fileID: 9132886449442648475}
   inGameQuitButton: {fileID: 9132886449675396819}
   amEscapeMenu: 1
+  prevGamePaused: 0
+  prevPlayerControls: 0
+  prevUIInteraction: 0
 --- !u!1 &9132886448035687640
 GameObject:
   m_ObjectHideFlags: 0
@@ -12603,7 +12606,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9132886448015421926}
         m_TargetAssemblyTypeName: MainMenuControl, Assembly-CSharp
-        m_MethodName: saveToFile
+        m_MethodName: saveToFileFromUserInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
