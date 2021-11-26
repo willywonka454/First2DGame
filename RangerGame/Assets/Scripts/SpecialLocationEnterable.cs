@@ -19,7 +19,6 @@ public class SpecialLocationEnterable : MonoBehaviour, IPointerEnterHandler, IPo
     {
         myRadius = GetComponent<DetectRadius>();
         myTeleporter = GetComponent<SceneTeleport>();
-
         myTeleporter.player = GameObject.FindWithTag("Player");
     }
 

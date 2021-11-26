@@ -29,7 +29,7 @@ public class MyHealth : MonoBehaviour
 	public void heal(int healAmount)
 	{
 		int tempHP = myHP + healAmount;
-		if (tempHP < myMaxHP) myHP = myMaxHP;
+		if (tempHP > myMaxHP) myHP = myMaxHP;
 		else myHP = tempHP;
 	}
 }

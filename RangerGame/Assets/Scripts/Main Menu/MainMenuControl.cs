@@ -20,16 +20,77 @@ public class MainMenuControl : MonoBehaviour
     public Toggle fullscreenToggle;
     public bool initializing = true;
 
+    [Header("Save Game")]
+    public TMP_InputField saveAsInputField;
+    public Button saveAsButton;
+    public GameObject saveFileList;
+
+    [Header("In-game buttons")]
+    public Button resumeButton;
+    public Button returnToMainMenuButton;
+    public Button inGameQuitButton;    
+
+    [Header("Variables")]
+    public bool amEscapeMenu;
+
     void Start()
     {        
         initializeGraphics();
 
         initializeSound();
+
+        // Add actions to some in game menu buttons.
+        if (amEscapeMenu)
+        {
+            resumeButton.onClick.AddListener(resume);
+            returnToMainMenuButton.onClick.AddListener(returnToMainMenu);
+            inGameQuitButton.onClick.AddListener(quitFromInGame);
+        }
     }
 
     void Update()
     {
         
+    }
+
+    void OnEnable()
+    {
+
+    }
+
+    void OnDisable()
+    {
+
+    }
+
+    // In game methods
+    public void resume()
+    {
+        Debug.Log("Finish resume method.");
+    }
+
+    public void returnToMainMenu()
+    {
+        Debug.Log("Finish returnToMainMenu method.");
+    }
+
+    public void quitFromInGame()
+    {
+        Debug.Log("Finish exitFromInGame method.");
+    }
+
+    public void showMainPanelOnly()
+    {
+        
+    }
+
+    public void saveToFile()
+    {
+        string fileName = saveAsInputField.text;
+        GDMContainer.myGDM.saveToFile(fileName);
+
+        ButtonListTest savesList = saveFileList.GetComponent<ButtonListTest>();
+        savesList.insertNewSaveAtRuntime(fileName);
     }
 
     // New game methods

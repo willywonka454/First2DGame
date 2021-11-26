@@ -9397,6 +9397,8 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 1089992404}
   fullscreenToggle: {fileID: 885289060}
   initializing: 1
+  saveAsInputField: {fileID: 0}
+  saveAsButton: {fileID: 0}
 --- !u!1 &2046266251
 GameObject:
   m_ObjectHideFlags: 0

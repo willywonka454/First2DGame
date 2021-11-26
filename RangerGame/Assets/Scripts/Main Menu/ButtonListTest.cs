@@ -29,6 +29,13 @@ public class ButtonListTest : MonoBehaviour
         
     }
 
+    public void insertNewSaveAtRuntime(string saveName)
+    {
+        GameObject newButton = Instantiate(buttonPrefab, gameObject.transform);
+        TMP_Text textComponent = newButton.GetComponentInChildren<TMP_Text>();
+        textComponent.text = saveName;
+    }
+
     public string[] getSaveFileNames()
     {
         string[] retVal = new string[0];

@@ -16,6 +16,10 @@ public class GameData
     public int nearestVillageIndex;
 
     public bool respawnMenuIsActive;
+    public bool playerControls;
+    public bool UIInteraction;
+    public bool gameStart;
+    public bool gamePaused;
 
     public EntryPointData entryPointData;
     
@@ -28,7 +32,10 @@ public class GameData
             myScenes[i].myName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
         }
 
-        firstSceneName = "Village 1";
+        firstSceneName = "Inn";
+
+        playerControls = true;
+        UIInteraction = true;
 
         entryPointData = new EntryPointData();
     }

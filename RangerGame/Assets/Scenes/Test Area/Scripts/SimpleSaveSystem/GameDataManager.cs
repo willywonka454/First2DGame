@@ -40,7 +40,15 @@ public class GameDataManager
 
     public void prepareForNewGame()
     {
+        gameData = new GameData();
+
+        gameData.gameStart = true;
+        gameData.gamePaused = true;
+        gameData.playerControls = false;
+        gameData.UIInteraction = true;
+
         MyEntireScene firstScene = returnSceneFromName(gameData.firstSceneName);
+
         SceneObject player = new SceneObject();
         player.myName = "MyRanger";
         player.myPos = new Vector3(-31, -4, 0);
@@ -112,7 +120,7 @@ public class GameDataManager
     {
         saveCurrentScene();
 
-        saveFile = Path.Combine(gameSavesPath, fileName + ".json");
+        saveFile = Path.Combine(gameSavesPath, fileName + ".json");       
 
         string jsonString = JsonUtility.ToJson(gameData, true);
 

@@ -15,7 +15,7 @@ public class PlayerCombatV2 : Combat
 
     public override void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && GDMContainer.myGDM.gameData.playerControls)
         {
             myCrossbow.Shoot();
         }
@@ -30,9 +30,9 @@ public class PlayerCombatV2 : Combat
         int nearestVillageIndex = GDMContainer.myGDM.gameData.nearestVillageIndex;
         GDMContainer.myGDM.gameData.myScenes[nearestVillageIndex].mySceneObjects.Add(playerCopy);
 
-        GameObject cameraSpaceUI = GameObject.FindWithTag("Camera space UI");
-        CameraSpaceUIControl camSpaceUIControl = cameraSpaceUI.GetComponent<CameraSpaceUIControl>();
-        camSpaceUIControl.respawnMenu.SetActive(true);
+        GameObject UIContainer = GameObject.FindWithTag("UIContainer");
+        UIControl UIControl = UIContainer.GetComponent<UIControl>();
+        UIControl.respawnMenu.SetActive(true);
 
         base.die();        
     }
