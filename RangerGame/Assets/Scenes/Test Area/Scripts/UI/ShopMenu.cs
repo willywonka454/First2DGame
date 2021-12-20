@@ -25,6 +25,8 @@ public class ShopMenu : MonoBehaviour
     public Button buyHealthUnitButton;
 
     [Header("Pet")]
+    public GameObject petPrefab;
+    public Vector2 petSpawnLoc;
     public int petPrice = 10;
     public bool hasBoughtPet;
     public TMP_Text petPriceText;
@@ -59,7 +61,13 @@ public class ShopMenu : MonoBehaviour
         // Make buttons uninteractable if player cannot buy.
         updateButton(buyArrowButton1, arrowPrice);
         updateButton(buyArrowButton5, arrowPrice * 5);
-        updateButton(buyHealthUnitButton, healthUnitPrice);
+
+        // Special case for buyHealthUnitButton
+        if (!playerCanBuy(healthUnitPrice) || playerHealth.myHP >= playerHealth.myMaxHP)
+        {
+            buyHealthUnitButton.interactable = false;
+        }
+        else buyHealthUnitButton.interactable = true;
 
         // Special case for buyPetButton.
         if (!playerCanBuy(petPrice) || hasBoughtPet || GDMContainer.myGDM.gameData.UIInteraction == false)
@@ -73,12 +81,18 @@ public class ShopMenu : MonoBehaviour
     {
         // Do not let player fire arrows in the shop.
         GDMContainer.myGDM.gameData.playerControls = false;
+
+        // Update my hasBoughtPet bool.
+        hasBoughtPet = GDMContainer.myGDM.gameData.hasBoughtPet;
     }
 
     void OnDisable()
     {
         // When leaving the shop scene, let player fire arrows again.
         GDMContainer.myGDM.gameData.playerControls = true;
+
+        // Update gameData's hasBoughtPet bool.
+        GDMContainer.myGDM.gameData.hasBoughtPet = hasBoughtPet;
     }
 
     public void updateButton(Button myButton, int itemPrice)
@@ -119,6 +133,8 @@ public class ShopMenu : MonoBehaviour
         if (playerCanBuy(petPrice) && !hasBoughtPet)
         {
             playerInventory.removeCoins(petPrice);
+            Instantiate(petPrefab, petSpawnLoc, Quaternion.identity);
+            hasBoughtPet = true;
         }
     }
 }

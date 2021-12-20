@@ -5,93 +5,72 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: fc053a00fc0516b48ac0672d80cf1d47
   - enabled: 1
-    path: Assets/Scenes/Open plains.unity
+    path: Assets/Scenes/New scenes/Open plains.unity
     guid: 96ebc7e0b92427a4b9983b9efbcdcd3c
-  - enabled: 1
-    path: Assets/Scenes/Test Area/My Area.unity
-    guid: fbdd246858b97c342a8376962c46e547
   - enabled: 1
     path: Assets/Scenes/Villages/Village 1.unity
     guid: 3a67d5df3dfc6fc499a48ddeba431acc
   - enabled: 1
-    path: Assets/Scenes/Inn.unity
-    guid: 149311783c255b643bc8016cc7f387da
-  - enabled: 1
-    path: Assets/Scenes/Forests/Forest 1.unity
-    guid: aeaacfc4ca57908499b0914ed29ee989
-  - enabled: 1
-    path: Assets/Scenes/Cave.unity
-    guid: 16aeddbf529411a49b086b08f9a5c041
-  - enabled: 1
     path: Assets/Scenes/Villages/Village 2.unity
-    guid: d026638e22cb58548964a98cb3356264
-  - enabled: 1
-    path: Assets/Scenes/Forests/Forest 2.unity
-    guid: 726cc7bde8f35184fb8bc48245d1bc2f
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Castle.unity
-    guid: 55f598058f2584e408989a664482e187
-  - enabled: 1
-    path: Assets/Scenes/Castle Interior.unity
-    guid: e18aeaff69892b74d90affc3dc99c327
-  - enabled: 1
-    path: Assets/Scenes/Prison.unity
-    guid: 178eb8fac392af044b2ca1205415695c
-  - enabled: 1
-    path: Assets/Scenes/Cellar.unity
-    guid: 05d24c4c387e5ca409049eac039cb588
-  - enabled: 1
-    path: Assets/Scenes/Forests/Forest 3.unity
-    guid: 09f7b1576916cab49904218fa4fec7eb
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    guid: f1c4f5fce24bb50449d79030ef7df69d
   - enabled: 1
     path: Assets/Scenes/Villages/Village 3.unity
-    guid: 2f9c91bab61a241429701d98e1bd4960
+    guid: f74bb09eda6297c4889a29a72eed8fc6
   - enabled: 1
-    path: Assets/Scenes/Forests/Forest 4.unity
-    guid: 2703ad507ce3ff34dac4a42e5c34eb33
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/Inns/Inn 1.unity
+    guid: 149311783c255b643bc8016cc7f387da
   - enabled: 1
-    path: Assets/Scenes/Mountains.unity
-    guid: b21d742505f16b74f8c1fe47c28e47c0
+    path: Assets/Scenes/Inns/Inn 2.unity
+    guid: 2db5f518eac66e244bb5da55e999214c
   - enabled: 1
-    path: Assets/Scenes/Inside Mountain.unity
-    guid: 33be9b046ba3c104aafa2ba4f030d6fb
+    path: Assets/Scenes/Inns/Inn 3.unity
+    guid: b33fb37d41898db489db596696a9449e
+  - enabled: 1
+    path: Assets/Scenes/Forests/Forest 1.unity
+    guid: 023dfe7b9612d8b4c92b177628a3a70e
+  - enabled: 1
+    path: Assets/Scenes/Forests/Forest 2.unity
+    guid: 54e8c12eecb392141a3d60c6bc5dbfdd
+  - enabled: 1
+    path: Assets/Scenes/Forests/Forest 3.unity
+    guid: 651b62d323e9ee742a347e126ba2cdb5
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Cave.unity
+    guid: 43572d950cf617841937a8af772ecd3a
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Castle.unity
+    guid: fe95e0a930bc95947a6dfe47fbe952df
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Castle Interior.unity
+    guid: 2d8840a3d2d575e4183a45c44092a107
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Cellar.unity
+    guid: 82eed8d5c26b5ac4eafbbb939dee22d1
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Prison.unity
+    guid: eb00f1d95fba24d45a559ccf18994b29
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Mountains.unity
+    guid: 1534bb6e10c3ece4096fef27d9879cd7
+  - enabled: 1
+    path: Assets/Scenes/New scenes/Inside Mountain.unity
+    guid: 16a903963e9ba5c48813633a373c9d60
   - enabled: 1
     path: Assets/Scenes/FinalBoss.unity
     guid: 01cb287bf13fd174a8a308907d2f2dca
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
+    path: Assets/Scenes/Shops/Shop 1.unity
     guid: c113116644ffcd64f9416dd8811c8ecf
+  - enabled: 1
+    path: Assets/Scenes/Shops/Shop 2.unity
+    guid: 6d79fee18b1b55c408aae4620d3ec235
+  - enabled: 1
+    path: Assets/Scenes/Shops/Shop 3.unity
+    guid: 05118c5be9d5f2541acc5a788f7263ee
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 1f629837f5d5dec4aac7d8091b40c1c0

@@ -23,7 +23,8 @@ public class SkeletonCombat : MonoBehaviour
     {
         if (collider.gameObject.tag == "Arrow")
         {
-            ProjectileBehavior arrow = collider.gameObject.GetComponent<ProjectileBehavior>();
+            takeDmg(20);
+            /*ProjectileBehavior arrow = collider.gameObject.GetComponent<ProjectileBehavior>();
 
             GameObject dmgSource = arrow.owner;
 
@@ -34,7 +35,7 @@ public class SkeletonCombat : MonoBehaviour
                 dmg = arrow.owner.GetComponent<PlayerCombat>().attack;
             }
 
-            takeDmg(dmg, dmgSource);
+            takeDmg(dmg, dmgSource);*/
         }
     }
 
@@ -69,7 +70,7 @@ public class SkeletonCombat : MonoBehaviour
 
     public void die()
     {
-        Destroy(transform.parent.gameObject);
         coinDropper.dropCoin((healthScript.maxhp / 20) + 1);
+        Destroy(gameObject);        
     }
 }

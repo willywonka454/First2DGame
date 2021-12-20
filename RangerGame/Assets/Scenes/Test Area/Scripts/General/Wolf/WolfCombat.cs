@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WolfCombat : Combat
 {
+    public CoinDropper coinDropper;
 
     public WolfMovement wolfMovement;
     public DetectRadius attackRadius;
@@ -14,6 +15,8 @@ public class WolfCombat : Combat
     public override void Start()
     {
         base.Start();
+
+        coinDropper = GetComponent<CoinDropper>();
 
         wolfMovement = GetComponent<WolfMovement>();
 
@@ -45,11 +48,18 @@ public class WolfCombat : Combat
     {
         if (col.gameObject.tag == "Arrow")
         {
-            ProjectileBehavior projectile = col.gameObject.GetComponent<ProjectileBehavior>();
+            /*ProjectileBehavior projectile = col.gameObject.GetComponent<ProjectileBehavior>();
             GameObject owner = projectile.owner;
             int ownerAttackDamage = owner.GetComponent<Combat>().attackDamage;
-            takeDamage(ownerAttackDamage);
+            takeDamage(ownerAttackDamage);*/
+            takeDamage(20);
         }
+    }
+
+    public override void die()
+    {
+        coinDropper.dropCoin((myHealth.myMaxHP / 20) + 1);
+        base.die();
     }
 
     public void attackPlayer()

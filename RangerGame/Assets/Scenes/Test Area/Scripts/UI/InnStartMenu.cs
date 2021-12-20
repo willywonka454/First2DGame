@@ -39,6 +39,21 @@ public class InnStartMenu : MonoBehaviour
         updateButton(helpfulTipsBackButton);
     }
 
+    void OnEnable()
+    {
+        if (GDMContainer.myGDM.gameData.gameStart)
+        {
+            Time.timeScale = 0;
+            GDMContainer.myGDM.gameData.playerControls = false;
+            GDMContainer.myGDM.gameData.gamePaused = true;
+        }
+    }
+
+    void OnDisable()
+    {
+
+    }
+
     void updateButton(Button myButton)
     {
         if (GDMContainer.myGDM.gameData.UIInteraction == false) myButton.interactable = false;

@@ -35,6 +35,17 @@ public class MainMenuControl : MonoBehaviour
     public bool prevGamePaused;
     public bool prevPlayerControls;
     public bool prevUIInteraction;
+    public bool prevRespawnMenu;
+    public bool prevShopMenu;
+    public bool prevInnStartMenu;
+
+    [Header("UIControl")]
+    public UIControl UIControl;
+
+    void Awake()
+    {
+        if (amEscapeMenu) UIControl = gameObject.transform.parent.parent.GetComponent<UIControl>();
+    }
 
     void Start()
     {        
@@ -60,13 +71,24 @@ public class MainMenuControl : MonoBehaviour
     {
         if (amEscapeMenu)
         {
+            GDMContainer.myGDM.gameData.justLoadedASave = false;
+
             prevGamePaused = GDMContainer.myGDM.gameData.gamePaused;
             prevPlayerControls = GDMContainer.myGDM.gameData.playerControls;
-            prevUIInteraction = GDMContainer.myGDM.gameData.UIInteraction;
+            prevUIInteraction = GDMContainer.myGDM.gameData.UIInteraction;      
+
+            prevRespawnMenu = false;
+            prevInnStartMenu = false;
+            prevShopMenu = false;
+
+            if (UIControl.respawnMenu.activeSelf) { UIControl.respawnMenu.SetActive(false); prevRespawnMenu = true; }
+            if (UIControl.innStartMenu.activeSelf) { UIControl.innStartMenu.SetActive(false); prevInnStartMenu = true; }
+            if (UIControl.shopMenu.activeSelf) { UIControl.shopMenu.SetActive(false); prevShopMenu = true; }
 
             GDMContainer.myGDM.gameData.gamePaused = true;
             GDMContainer.myGDM.gameData.playerControls = false;
             GDMContainer.myGDM.gameData.UIInteraction = false;
+            GDMContainer.myGDM.gameData.playerMovementControls = false;
 
             Time.timeScale = 0;
         }
@@ -76,12 +98,26 @@ public class MainMenuControl : MonoBehaviour
     {
         if (amEscapeMenu)
         {
-            GDMContainer.myGDM.gameData.gamePaused = prevGamePaused;
-            GDMContainer.myGDM.gameData.playerControls = prevPlayerControls;
-            GDMContainer.myGDM.gameData.UIInteraction = prevUIInteraction;
+            if (GDMContainer.myGDM.gameData.justLoadedASave)
+            {
+                if (GDMContainer.myGDM.gameData.gamePaused) Time.timeScale = 0;
+                else Time.timeScale = 1;
+            }
 
-            if (GDMContainer.myGDM.gameData.gamePaused) Time.timeScale = 0;
-            else Time.timeScale = 1;
+            else
+            {
+                if (prevRespawnMenu) UIControl.respawnMenu.SetActive(true);
+                if (prevInnStartMenu) UIControl.innStartMenu.SetActive(true);
+                if (prevShopMenu) UIControl.shopMenu.SetActive(true);
+
+                GDMContainer.myGDM.gameData.gamePaused = prevGamePaused;
+                GDMContainer.myGDM.gameData.playerControls = prevPlayerControls;
+                GDMContainer.myGDM.gameData.UIInteraction = prevUIInteraction;
+                GDMContainer.myGDM.gameData.playerMovementControls = true;
+
+                if (GDMContainer.myGDM.gameData.gamePaused) Time.timeScale = 0;
+                else Time.timeScale = 1;
+            }
         }        
     }
 
@@ -114,6 +150,7 @@ public class MainMenuControl : MonoBehaviour
         GDMContainer.myGDM.gameData.gamePaused = prevGamePaused;
         GDMContainer.myGDM.gameData.playerControls = prevPlayerControls;
         GDMContainer.myGDM.gameData.UIInteraction = prevUIInteraction;
+        GDMContainer.myGDM.gameData.playerMovementControls = true;
 
         GDMContainer.myGDM.saveToFile(fileName);
         ButtonListTest savesList = saveFileList.GetComponent<ButtonListTest>();
@@ -122,6 +159,7 @@ public class MainMenuControl : MonoBehaviour
         GDMContainer.myGDM.gameData.gamePaused = true;
         GDMContainer.myGDM.gameData.playerControls = false;
         GDMContainer.myGDM.gameData.UIInteraction = false;
+        GDMContainer.myGDM.gameData.playerMovementControls = false;
     }
 
     public void saveToFileFromUserInput()

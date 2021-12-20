@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneTeleport : MonoBehaviour
 {
     public GameObject player;
+    public GameObject pet;
     public bool canBeTriggeredByCollision;
     public string targetSceneName = "";
     public string entryPointName = "";
@@ -31,8 +32,10 @@ public class SceneTeleport : MonoBehaviour
     IEnumerator destroyPlayerAndThenTeleport()
     {
         addPlayerToNextScene();
-
+        addPetToNextScene();
+        
         Destroy(player);
+        Destroy(pet);
 
         yield return null;
 
@@ -54,5 +57,21 @@ public class SceneTeleport : MonoBehaviour
 
         MyEntireScene targetScene = GDMContainer.myGDM.returnSceneFromName(targetSceneName);
         targetScene.mySceneObjects.Add(playerSceneObject);
+    }
+
+    public void addPetToNextScene()
+    {
+        pet = GameObject.FindWithTag("Pet");
+
+        if (pet != null)
+        {
+            GenericSaver petSaver = pet.GetComponent<GenericSaver>();
+            SceneObject petSceneObject = new SceneObject();
+            petSaver.saveMyDataToSceneObject(petSceneObject);
+
+            MyEntireScene targetScene = GDMContainer.myGDM.returnSceneFromName(targetSceneName);
+            targetScene.mySceneObjects.Add(petSceneObject);
+        }
+        
     }
 }

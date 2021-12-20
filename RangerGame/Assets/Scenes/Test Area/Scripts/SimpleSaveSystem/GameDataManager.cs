@@ -45,7 +45,9 @@ public class GameDataManager
         gameData.gameStart = true;
         gameData.gamePaused = true;
         gameData.playerControls = false;
+        gameData.playerMovementControls = true;
         gameData.UIInteraction = true;
+        gameData.camOrthoSize = 19.32f;
 
         MyEntireScene firstScene = returnSceneFromName(gameData.firstSceneName);
 
@@ -53,6 +55,9 @@ public class GameDataManager
         player.myName = "MyRanger";
         player.myPos = new Vector3(-31, -4, 0);
         player.myLocalScale = new Vector3(1, 1, 1);
+        player.hp = 100;
+        player.coins = 10;
+        player.arrows = 10;
         firstScene.mySceneObjects.Add(player);
 
         gameData.entryPointData = new EntryPointData("Inn game start", player.myLocalScale);
@@ -92,8 +97,8 @@ public class GameDataManager
 
         foreach (SceneObject sceneObject in myCurrentScene.mySceneObjects)
         {
-            GameObject myPrefab = Resources.Load<GameObject>(sceneObject.myName);
-            GameObject myGameObject = Object.Instantiate(myPrefab);
+            GameObject myPrefab = Resources.Load<GameObject>(sceneObject.myName);            
+            GameObject myGameObject = Object.Instantiate(myPrefab);            
             GenericSaver myLoaderScript = myGameObject.GetComponent<GenericSaver>();
             myLoaderScript.loadDataFromSceneObjectToMyGameObject(sceneObject);
         }
@@ -142,11 +147,13 @@ public class GameDataManager
             SceneManager.LoadScene(gameData.currSceneIndex);
 
             Debug.Log(fileName + " was loaded successfully.");
+
+            gameData.justLoadedASave = true;
         }
 
         else
         {
             Debug.Log(fileName + " was not loaded successfully.");
-        }
+        }        
     }
 }

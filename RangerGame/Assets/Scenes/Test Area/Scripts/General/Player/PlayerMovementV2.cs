@@ -16,6 +16,12 @@ public class PlayerMovementV2 : Movement
         float dirX = Input.GetAxisRaw("Horizontal");
         float dirY = Input.GetAxisRaw("Vertical");
 
+        if (GDMContainer.myGDM.gameData.playerMovementControls == false)
+        {
+            dirX = 0;
+            dirY = 0;
+        }
+
         myRB.velocity = new Vector2(dirX * speed, dirY * speed);        
 
         if (dirX < 0f)

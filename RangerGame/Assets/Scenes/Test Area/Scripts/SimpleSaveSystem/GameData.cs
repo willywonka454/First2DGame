@@ -17,9 +17,16 @@ public class GameData
 
     public bool respawnMenuIsActive;
     public bool playerControls;
+    public bool playerMovementControls;
     public bool UIInteraction;
     public bool gameStart;
     public bool gamePaused;
+    public bool dragIsDead;
+    public bool justLoadedASave;
+    public bool hasBoughtPet;
+
+    public bool camLocked;
+    public float camOrthoSize;
 
     public EntryPointData entryPointData;
     
@@ -32,7 +39,7 @@ public class GameData
             myScenes[i].myName = Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(i));
         }
 
-        firstSceneName = "Inn";
+        firstSceneName = "Inn 1";
 
         playerControls = true;
         UIInteraction = true;

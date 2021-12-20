@@ -18,7 +18,7 @@ public class SkeletonMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(dirX * speed, rb.velocity.y);
+        rb.velocity = new Vector2(Mathf.Sign(transform.localScale.x) * speed * -1, rb.velocity.y);
     }
 
     void OnTriggerEnter2D(Collider2D col)

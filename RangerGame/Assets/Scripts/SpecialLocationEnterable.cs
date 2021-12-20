@@ -15,7 +15,7 @@ public class SpecialLocationEnterable : MonoBehaviour, IPointerEnterHandler, IPo
     public SceneTeleport myTeleporter;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         myRadius = GetComponent<DetectRadius>();
         myTeleporter = GetComponent<SceneTeleport>();

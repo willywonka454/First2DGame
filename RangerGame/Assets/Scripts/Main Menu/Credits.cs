@@ -20,14 +20,11 @@ public class Credits : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            LevelControl.loadLevelByIndex(GlobalVars.indexOfPrevLevel);
-        }
+
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        transform.position = startPos;
+        if (col.gameObject.tag != "Player") transform.position = startPos;
     }
 }

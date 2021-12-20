@@ -31,13 +31,23 @@ public class MobaCamera : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {       
+    {           
         camRbody = cam.GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTrans = player.transform;
-        }        
+        }
+        
+        if (GDMContainer.myGDM.gameData.camLocked)
+        {
+            defaultLock = true;
+        }
+    }
+
+    void OnDisable()
+    {
+        GDMContainer.myGDM.gameData.camLocked = defaultLock;
     }
 
     // Update is called once per frame

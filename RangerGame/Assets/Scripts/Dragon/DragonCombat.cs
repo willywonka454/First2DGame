@@ -14,6 +14,9 @@ public class DragonCombat : MonoBehaviour
     private bool fireMode = false;
     private float fireRate = 0.5f;
 
+    public Vector3 chestSpawnPos = new Vector3(0.82f, -2.18f, 28.181f);
+    public GameObject chestPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,12 +67,7 @@ public class DragonCombat : MonoBehaviour
     {
         if (collider.gameObject.tag == "Arrow")
         {
-            healthScript.takeDmg(20);
-        }
-
-        if (healthScript.hp <= 0)
-        {
-            Destroy(transform.parent.gameObject);
+            takeDmg(5);
         }
     }
 
@@ -81,11 +79,17 @@ public class DragonCombat : MonoBehaviour
         {
             die();
         }
-
     }
 
     public void die()
-    {
+    {        
+        GameObject chestObject = Instantiate(chestPrefab);
+        chestObject.transform.position = chestSpawnPos;
+
+        Openable chestScript = chestObject.GetComponentInChildren<Openable>();
+        chestScript.valToDrop = 1000000;
+
         Destroy(transform.parent.gameObject);
+        GDMContainer.myGDM.gameData.dragIsDead = true;
     }
 }

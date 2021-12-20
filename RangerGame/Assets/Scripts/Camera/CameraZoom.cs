@@ -15,6 +15,7 @@ public class CameraZoom : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        cam.orthographicSize = GDMContainer.myGDM.gameData.camOrthoSize;
     }
 
     // Update is called once per frame
@@ -44,10 +45,12 @@ public class CameraZoom : MonoBehaviour
     public void zoomIn(float zoomAmount)
     {
         cam.orthographicSize -= zoomAmount;
+        GDMContainer.myGDM.gameData.camOrthoSize = cam.orthographicSize;
     }
 
     public void zoomOut(float zoomAmount)
     {
         cam.orthographicSize += zoomAmount;
+        GDMContainer.myGDM.gameData.camOrthoSize = cam.orthographicSize;
     }
 }

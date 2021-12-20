@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1110816630383755001}
   - component: {fileID: 1110816630383754981}
   - component: {fileID: 528040263}
+  - component: {fileID: 6706619055580714682}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Wolf
@@ -175,7 +176,6 @@ MonoBehaviour:
   myName: detectionRadius
   center: {x: 0, y: 0}
   radius: 15
-  triedLookingForTarget: 0
   targetTag: Player
   target: {fileID: 0}
   display: 0
@@ -198,7 +198,6 @@ MonoBehaviour:
   myName: attackRadius
   center: {x: 0, y: 0}
   radius: 5
-  triedLookingForTarget: 0
   targetTag: Player
   target: {fileID: 0}
   display: 0
@@ -237,7 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90782fc32bf961d45b557443bbeff2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triedLookingForTarget: 0
   targetTag: Player
   target: {fileID: 0}
   targetPos: {x: 0, y: 0}
@@ -276,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHealth: {fileID: 0}
   attackDamage: 10
+  coinDropper: {fileID: 0}
   wolfMovement: {fileID: 0}
   attackRadius: {fileID: 0}
   attackSpeed: 1
@@ -306,6 +305,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180d63acc25ad6249afa6a2873ed31bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6706619055580714682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110816630383754993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8b134d82fd3fa4ea57e52ec950fc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropLocation: {fileID: 1110816630383755005}
+  coinPrefab: {fileID: 2333888904770998791, guid: b474f89d568a0a24f8dd51d8a6be4b75, type: 3}
 --- !u!1 &1110816631467914251
 GameObject:
   m_ObjectHideFlags: 0

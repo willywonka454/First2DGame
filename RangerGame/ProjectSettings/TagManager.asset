@@ -26,6 +26,7 @@ TagManager:
   - Green blob
   - Scene loader
   - UIContainer
+  - Chest
   layers:
   - Default
   - TransparentFX

@@ -10,4 +10,15 @@ public class SceneObject
     public Vector3 myPos;
     public Quaternion myRotation;
     public Vector3 myLocalScale;
+
+    // Fields common to player objects.
+    public int hp;
+    public int coins;
+    public int arrows;
+
+    // Fields common to bats.
+    public int dirY;
+
+    // Fields common to coins;
+    public int value;
 }

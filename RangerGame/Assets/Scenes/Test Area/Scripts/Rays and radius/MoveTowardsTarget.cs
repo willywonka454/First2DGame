@@ -59,6 +59,11 @@ public class MoveTowardsTarget : MonoBehaviour
 
             faceTarget();
         }
+
+        else
+        {
+            myRB.velocity = new Vector2(0, 0);
+        }
     }
 
     public void faceTarget()
